@@ -6,7 +6,9 @@ import { site } from "@/lib/site";
 
 type Fields = { name: string; email: string; company: string; message: string };
 type Errors = Partial<Record<keyof Fields, string>>;
-type Status = { state: "idle" | "sending" | "sent" } | { state: "error"; message: string };
+type Status = { state: "idle" | "sending" | "sent" } | { state: "error"; message: string; mailto: string };
+
+const TIMEOUT_MS = 25_000;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -52,9 +54,18 @@ export function ContactForm() {
     if (honey) return;
 
     setStatus({ state: "sending" });
+    // Pre-filled email so the visitor can still send if delivery fails.
+    const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
+      `Portfolio enquiry from ${fields.name.trim()}`,
+    )}&body=${encodeURIComponent(
+      `${fields.message.trim()}\n\n${fields.name.trim()}${fields.company.trim() ? ` · ${fields.company.trim()}` : ""}\n${fields.email.trim()}`,
+    )}`;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
       const res = await fetch(site.formEndpoint, {
         method: "POST",
+        signal: controller.signal,
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           name: fields.name.trim(),
@@ -76,10 +87,18 @@ export function ContactForm() {
         throw new Error(data.message || `Request failed (${res.status})`);
       }
     } catch (err) {
+      const timedOut = err instanceof DOMException && err.name === "AbortError";
       setStatus({
         state: "error",
-        message: err instanceof Error ? err.message : "Something went wrong.",
+        message: timedOut
+          ? "the mail service didn't respond in time"
+          : err instanceof Error
+            ? err.message
+            : "something went wrong",
+        mailto,
       });
+    } finally {
+      clearTimeout(timer);
     }
   }
 
@@ -145,10 +164,19 @@ export function ContactForm() {
       {status.state === "error" && (
         <div role="alert" className="mt-5 flex gap-3 rounded-xl border border-red-400/30 bg-red-400/[0.06] p-4 text-sm">
           <CircleAlert className="mt-0.5 size-4 shrink-0 text-red-300" aria-hidden />
-          <p className="text-fg/85">
-            Your message couldn&apos;t be sent ({status.message}). Please email me directly at{" "}
-            <a className="text-cyan underline underline-offset-2" href={`mailto:${site.email}`}>{site.email}</a>.
-          </p>
+          <div className="text-fg/85">
+            <p>
+              Your message couldn&apos;t be sent ({status.message}). Your text is still in the form. You can send it
+              from your own email app instead:
+            </p>
+            <a
+              href={status.mailto}
+              className="mt-3 inline-flex items-center gap-2 rounded-full border border-cyan/50 px-4 py-2 text-cyan hover:bg-cyan/10"
+            >
+              Open in email app
+            </a>
+            <p className="mt-2 text-xs text-muted">Or write to {site.email}</p>
+          </div>
         </div>
       )}
 
