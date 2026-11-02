@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rishabh Shukla — Portfolio
 
-## Getting Started
+Personal portfolio of **Rishabh Shukla**: Startup Operator, 0-to-1 Builder, Growth Strategist and Business Operations & Technology Execution professional based in Lucknow, India.
 
-First, run the development server:
+**Live site:** https://rishabh18795-rgb.github.io/rishabh-shukla-portfolio/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The site presents MechServi (where Rishabh leads startup operations and growth), his consulting engagements, and selected ventures: BlooCube, SetoraHome, InstaBeam and Hasiru Nidhi. Each project lists the role held, the problem solved, what was built, what is still planned, and a technology stack taken from the actual repository.
+
+## Tech stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Styling | Tailwind CSS v4 (design tokens in `src/app/globals.css`) |
+| Animation | Framer Motion, with `prefers-reduced-motion` respected |
+| Icons | lucide-react, plus inline GitHub/LinkedIn SVGs |
+| Fonts | Inter Tight, Instrument Serif, JetBrains Mono via `next/font` (self-hosted at build) |
+| Output | Fully static export (`output: "export"`) |
+| Hosting | GitHub Pages, deployed by GitHub Actions on every push to `main` |
+| Contact form | [FormSubmit](https://formsubmit.co) AJAX endpoint: client-side validation, honeypot, real email delivery, no API keys |
+
+## Sections
+
+Navigation · Hero · About · Experience timeline · Featured projects · Technical & business capabilities · Growth & business execution · Education · Contact (form + direct channels) · Resume download
+
+SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` schema, `sitemap.xml`, `robots.txt`, SVG favicon.
+
+## Project structure
+
+```
+src/
+  app/            layout (metadata, fonts), page, icon.svg, sitemap.ts, robots.ts, not-found
+  components/     Nav, Hero, About, Experience, Projects, Skills, Growth, Contact, ContactForm, ui
+  lib/
+    site.ts       profile, links, contact details, base-path helper
+    content.ts    experience, projects, skills: all site copy lives here
+public/
+  projects/       screenshots of the live project sites
+  Rishabh_Shukla_Resume_2026.pdf
+  og.png, rishabh-shukla.jpg
+.github/workflows/deploy.yml
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To update content, edit `src/lib/content.ts` (experience, projects, skills) or `src/lib/site.ts` (contact details, links). To replace the resume, overwrite `public/Rishabh_Shukla_Resume_2026.pdf`, or change `resume` / `resumeFileName` in `site.ts`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requires Node.js 20.9+ (tested on Node 24) and npm.
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open http://localhost:3000/rishabh-shukla-portfolio/ (the site is built for the `/rishabh-shukla-portfolio` base path).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint     # ESLint
+npm run build    # static export to ./out
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Pushing to `main` runs `.github/workflows/deploy.yml`, which lints, builds the static export and publishes `out/` to GitHub Pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Custom domain
+
+To serve from a domain root (e.g. `rishabhshukla.in`):
+
+1. Add the domain in **Settings → Pages → Custom domain** and create `public/CNAME` containing the domain.
+2. Build with an empty base path: add `PAGES_BASE_PATH: ""` as an `env` entry on the build step in the workflow.
+3. Update `site.url` in `src/lib/site.ts`.
+
+## Contact form
+
+Submissions are POSTed from the browser to `https://formsubmit.co/ajax/<email>`, which emails them to Rishabh. There is no backend and no secret. FormSubmit sends a one-time activation email the first time the form is used; after the link in that email is clicked, submissions are delivered. If delivery fails, the form shows the error and a direct mailto link.
+
+## Security
+
+No API keys, tokens or credentials are used or committed. `.env*` files are git-ignored.
+
+## License
+
+Content, resume and images © Rishabh Shukla. All rights reserved. The code may be used as a reference.
