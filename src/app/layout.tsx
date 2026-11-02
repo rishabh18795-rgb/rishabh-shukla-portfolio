@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import { site, asset } from "@/lib/site";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const sans = Inter_Tight({ variable: "--font-inter-tight", subsets: ["latin"], display: "swap" });
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     locale: "en_IN",
-    images: [{ url: asset("/og.png"), width: 1200, height: 630, alt: "Rishabh Shukla — I build businesses, systems, products & growth engines." }],
+    images: [{ url: "og.png", width: 1200, height: 630, alt: "Rishabh Shukla — I build businesses, systems, products & growth engines." }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: [asset("/og.png")],
+    images: ["og.png"],
   },
   robots: { index: true, follow: true },
 };
