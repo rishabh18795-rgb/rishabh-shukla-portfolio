@@ -13,39 +13,42 @@ export type Experience = {
   period?: string;
   description: string;
   highlights: string[];
-  contribution: string;
+  contribution?: string;
   link?: { label: string; href: string };
 };
 
 export const coreExperience: Experience[] = [
   {
     id: "mechservi",
-    name: "MechServi",
-    role: "Startup Operations & Growth Lead",
+    name: "MechServi Technology Pvt. Ltd.",
+    role: "Founder & CEO",
     kind: "Operating role",
     period: "2023 — Present",
-    description: "Doorstep bike and car service startup in Lucknow.",
+    description: "Doorstep automotive services business, Lucknow.",
     highlights: [
-      "Led the 0-to-1 launch: vendor onboarding, field staff coordination, booking management and customer acquisition.",
-      "Built the mechanic partner network with onboarding SOPs, service pricing, B2B fleet packages and subscription plans.",
-      "Ran Meta and Google Ads funnels (ads → WhatsApp → confirmed booking) with WhatsApp Business API and CRM follow-ups.",
+      "Built and managed a doorstep automotive services business.",
+      "Developed operational processes, service SOPs and pricing structures.",
+      "Managed vendor and service-provider onboarding.",
+      "Worked on B2B partnerships, subscriptions and business development.",
+      "Managed customer acquisition through Meta and Google Ads.",
+      "Implemented CRM and WhatsApp Business workflows.",
+      "Coordinated field teams, service delivery and customer issue resolution.",
     ],
-    contribution: "Took the business from concept to live operations, owning operations, growth and brand end to end.",
     link: { label: "mechservi.in", href: "https://mechservi.in" },
   },
   {
     id: "freelance",
-    name: "Independent Consulting",
+    name: "Independent",
     role: "Growth & Digital Marketing Consultant",
     kind: "Freelance practice",
     period: "2022 — 2023",
-    description: "Growth and e-commerce work for SMEs in services, retail, real estate and education.",
+    description: "Growth and e-commerce work for businesses across service, retail, e-commerce, real estate and education.",
     highlights: [
-      "Managed Meta Ads and Google Ads campaigns focused on ROAS and lead volume.",
-      "Built and launched Shopify stores: product setup, payment integration, theme customisation and SEO.",
-      "Designed conversion funnels and coached clients on WhatsApp follow-up.",
+      "Managed Meta Ads and Google Ads campaigns for businesses.",
+      "Built Shopify stores and supported e-commerce operations.",
+      "Worked on lead generation, marketing funnels and customer acquisition.",
+      "Supported SEO, analytics, reporting and social media growth.",
     ],
-    contribution: "Helped offline businesses open online revenue channels through Shopify stores and paid acquisition.",
   },
 ];
 
@@ -170,7 +173,7 @@ export const projects: Project[] = [
     kicker: "Automotive services · 2023 → present",
     tagline: "A doorstep bike and car service business, taken from idea to live operations in Lucknow.",
     status: { label: "Live business", tone: "live" },
-    role: "Startup Operations & Growth Lead",
+    role: "Founder & CEO",
     problem:
       "Vehicle owners lose half a day to a workshop visit, while skilled independent mechanics have no steady demand or booking system. MechServi brings the service to the driveway.",
     work: [

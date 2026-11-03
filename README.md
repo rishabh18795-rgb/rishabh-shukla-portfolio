@@ -21,7 +21,7 @@ The site presents MechServi (where Rishabh leads startup operations and growth),
 
 ## Sections
 
-Home · About (how I think & work, focus areas, education) · Technical Skills · Experience (expandable timeline) · Projects · Contact (form + direct channels) · Resume download
+Home (hero + professional overview) · Technical Skills · Experience (expandable timeline, education) · Projects · Contact (form + direct channels) · Resume download
 
 SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` schema, `sitemap.xml`, `robots.txt`, SVG favicon.
 
@@ -30,7 +30,7 @@ SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` sche
 ```
 src/
   app/            layout (metadata, fonts), page, icon.svg, sitemap.ts, robots.ts, not-found
-  components/     Nav, Hero, About, Skills, Experience, Projects, Contact, ContactForm, Portrait, ui
+  components/     Nav, Hero (incl. Overview), Skills, Experience, Projects, Contact, ContactForm, ui
   lib/
     site.ts       profile, links, contact details, base-path helper
     content.ts    experience, projects, skill groups: all site copy lives here
@@ -38,7 +38,7 @@ scripts/og.html   source for public/og.png (render at 1200x630)
 public/
   projects/       screenshots of the live project sites
   Rishabh_Shukla_Resume_2026.pdf
-  og.png, rishabh-shukla.jpg
+  og.png
 .github/workflows/deploy.yml
 ```
 

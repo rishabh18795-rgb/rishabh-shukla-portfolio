@@ -22,7 +22,7 @@ export function Skills() {
     <section id="skills" className="relative border-t border-line py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="02"
+          index="01"
           label="Technical skills"
           title={
             <>
@@ -30,7 +30,7 @@ export function Skills() {
               <span className="font-serif font-normal italic text-cyan">run and scale</span>.
             </>
           }
-          intro="Every technology listed is in my repositories or platforms I've run for businesses. I build with modern frameworks and AI-assisted development, and I own scoping, review, testing and deployment."
+          intro="Only what my repositories or day-to-day work can show. I build with modern frameworks and AI-assisted development, and own scoping, testing and deployment."
         />
 
         <Reveal>

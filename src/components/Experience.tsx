@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, GraduationCap } from "lucide-react";
 import { coreExperience, engagements, engagementsPeriod, type Experience as Exp } from "@/lib/content";
 import { Reveal, SectionHeading } from "./ui";
 
@@ -60,10 +60,12 @@ function ExperienceItem({ e, open, onToggle, highlight }: { e: Exp; open: boolea
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 rounded-xl border border-cyan/20 bg-cyan-soft/40 p-4">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-cyan">Key contribution</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-fg">{e.contribution}</p>
-              </div>
+              {e.contribution && (
+                <div className="mt-5 rounded-xl border border-cyan/20 bg-cyan-soft/40 p-4">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-cyan">Key contribution</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-fg">{e.contribution}</p>
+                </div>
+              )}
               {e.link && (
                 <a
                   href={e.link.href}
@@ -98,14 +100,14 @@ export function Experience() {
     <section id="experience" className="relative border-t border-line py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="03"
+          index="02"
           label="Experience"
           title={
             <>
               What I&apos;ve <span className="font-serif font-normal italic text-cyan">executed</span>.
             </>
           }
-          intro="Operating roles first, then consulting and project engagements. Select any entry for highlights and key contribution."
+          intro="Roles first, then consulting and project engagements. Select an entry for details."
         />
 
         <div className="grid gap-12 lg:grid-cols-[220px_1fr] lg:gap-16">
@@ -149,6 +151,17 @@ export function Experience() {
                 </Reveal>
               ))}
             </div>
+
+            <Reveal className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-8">
+              <div className="flex items-center gap-4">
+                <GraduationCap className="size-5 text-cyan" aria-hidden />
+                <div>
+                  <p className="font-medium">Bachelor of Technology (B.Tech)</p>
+                  <p className="text-sm text-muted">Glocal University, Saharanpur</p>
+                </div>
+              </div>
+              <span className="font-mono text-xs text-fg/80">2013 — 2017</span>
+            </Reveal>
           </div>
         </div>
       </div>

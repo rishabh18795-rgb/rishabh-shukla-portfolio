@@ -2,7 +2,6 @@ import { ArrowUpRight, Briefcase, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { ContactForm } from "./ContactForm";
 import { GitHubIcon, LinkedInIcon } from "./icons";
-import { Portrait } from "./Portrait";
 import { Reveal } from "./ui";
 
 const channels = [
@@ -20,18 +19,11 @@ export function Contact() {
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
-            <span className="text-cyan">05</span>
+            <span className="text-cyan">04</span>
             <span className="h-px w-8 bg-line-strong" />
             Contact
           </p>
-          <div className="mt-8 flex items-center gap-5">
-            <Portrait className="w-24 shrink-0 md:w-28" sizes="112px" />
-            <div>
-              <p className="text-lg font-medium tracking-tight">Rishabh Shukla</p>
-              <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.2em] text-cyan">{site.designation}</p>
-            </div>
-          </div>
-          <h2 className="mt-10 text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
+          <h2 className="mt-6 text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
             Let&apos;s build something{" "}
             <span className="font-serif font-normal italic text-cyan">meaningful</span>.
           </h2>
