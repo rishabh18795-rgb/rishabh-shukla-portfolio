@@ -84,7 +84,8 @@ export function ContactForm() {
         setFields(empty);
         setTouched(false);
       } else {
-        throw new Error(data.message || `Request failed (${res.status})`);
+        // Relay messages (e.g. activation notices) are meant for the site owner, not visitors.
+        throw new Error(res.ok ? "the form isn't accepting messages right now" : `request failed (${res.status})`);
       }
     } catch (err) {
       const timedOut = err instanceof DOMException && err.name === "AbortError";
