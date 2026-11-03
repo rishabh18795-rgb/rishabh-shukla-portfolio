@@ -129,8 +129,8 @@ export function Projects() {
     <section id="projects" className="relative border-t border-line py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="03"
-          label="Selected work"
+          index="04"
+          label="Projects"
           title={
             <>
               Ventures and products,{" "}
