@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
 import { asset, navItems, site } from "@/lib/site";
+import { LinkedInIcon } from "./icons";
 
 export function Nav() {
   const [active, setActive] = useState("home");
@@ -78,6 +79,16 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile (opens in a new tab)"
+            className="inline-flex size-10 items-center justify-center gap-2 rounded-full border border-line-strong text-sm font-medium text-fg transition hover:border-cyan hover:text-cyan sm:size-auto sm:px-4 sm:py-2"
+          >
+            <LinkedInIcon className="size-4" />
+            <span className="hidden sm:inline">LinkedIn</span>
+          </a>
+          <a
             href={asset(site.resume)}
             download={site.resumeFileName}
             className="hidden items-center gap-2 rounded-full bg-fg px-4 py-2 text-sm font-medium text-ink transition hover:bg-cyan sm:inline-flex"
@@ -127,7 +138,7 @@ export function Nav() {
                 </motion.li>
               ))}
             </ul>
-            <div className="px-5 pt-8">
+            <div className="flex flex-wrap gap-3 px-5 pt-8">
               <a
                 href={asset(site.resume)}
                 download={site.resumeFileName}
@@ -135,6 +146,16 @@ export function Nav() {
               >
                 <Download className="size-4" aria-hidden />
                 Download resume
+              </a>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-3 text-sm font-medium"
+              >
+                <LinkedInIcon className="size-4" />
+                LinkedIn
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
           </motion.div>
