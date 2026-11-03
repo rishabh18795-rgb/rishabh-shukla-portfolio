@@ -6,15 +6,11 @@ export const asset = (path: string) => `${BASE_PATH}${path}`;
 export const site = {
   name: "Rishabh Shukla",
   url: "https://rishabh18795-rgb.github.io/rishabh-shukla-portfolio",
-  title: "Rishabh Shukla — Startup Operator, 0-to-1 Builder & Growth Strategist",
+  title: "Rishabh Shukla — Strategy & Operations Lead",
   description:
-    "Rishabh Shukla is a startup operations and growth professional from Lucknow, India. He took MechServi from concept to live operations and works with early-stage teams on marketplaces, growth funnels, WhatsApp automation and product delivery.",
-  positioning: [
-    "Startup Operator",
-    "0-to-1 Builder",
-    "Growth Strategist",
-    "Business Operations & Technology Execution",
-  ],
+    "Rishabh Shukla is a strategy and operations professional from Lucknow, India, with 3+ years of startup execution across business growth, product and marketplace operations, GTM strategy and technology implementation.",
+  designation: "Strategy & Operations Lead",
+  positioning: ["Business Growth", "Product Operations", "GTM Strategy", "Technology Execution"],
   location: "Lucknow, Uttar Pradesh, India",
   availability: "Open to Delhi NCR (Gurgaon / Noida) and Remote",
   email: "rishabh18795@gmail.com",
@@ -32,8 +28,8 @@ export const site = {
 export const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
 ] as const;
