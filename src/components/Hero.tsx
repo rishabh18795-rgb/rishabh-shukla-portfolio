@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Download, MapPin } from "lucide-react";
-import { asset, site } from "@/lib/site";
-import { GitHubIcon, LinkedInIcon } from "./icons";
-import { Portrait } from "./Portrait";
+import { ArrowDown, ArrowRight, Blocks, Cog, LineChart, Rocket, type LucideIcon } from "lucide-react";
+import { site } from "@/lib/site";
+import { Reveal } from "./ui";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -16,107 +15,96 @@ const fadeUp = (delay: number) => ({
 
 export function Hero() {
   return (
-    <section id="home" className="noise relative flex min-h-[100svh] items-center overflow-hidden pb-20 pt-28 md:pt-32">
+    <section id="home" className="noise relative flex min-h-[100svh] items-center overflow-hidden pb-24 pt-32">
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden />
-      <div className="glow-cyan pointer-events-none absolute -top-40 left-1/2 h-[640px] w-[900px] -translate-x-1/2" aria-hidden />
+      <div className="glow-cyan pointer-events-none absolute -top-40 left-1/2 h-[640px] w-[1000px] -translate-x-1/2" aria-hidden />
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20">
-        <div>
-          <motion.p
-            {...fadeUp(0)}
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-muted"
-          >
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-live" />
+      <div className="relative mx-auto w-full max-w-7xl px-5 md:px-8">
+        <motion.p {...fadeUp(0)} className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.28em] text-cyan">
+          <span className="h-px w-10 bg-cyan/60" aria-hidden />
+          {site.designation}
+        </motion.p>
+
+        <motion.h1
+          {...fadeUp(0.08)}
+          className="text-gradient mt-8 text-[3.4rem] font-medium leading-[0.92] tracking-[-0.045em] sm:text-7xl md:text-8xl xl:text-[9.5rem]"
+        >
+          Rishabh <span className="font-serif font-normal italic text-fg">Shukla</span>
+        </motion.h1>
+
+        <motion.p
+          {...fadeUp(0.16)}
+          className="mt-8 flex flex-col gap-1 text-2xl font-medium tracking-tight text-fg sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 md:text-3xl"
+        >
+          {site.headline.map((h, i) => (
+            <span key={h} className="flex items-center gap-4">
+              {i > 0 && <span className="hidden text-cyan/70 sm:inline" aria-hidden>|</span>}
+              {h}
             </span>
-            Open to Strategy &amp; Operations roles
-          </motion.p>
+          ))}
+        </motion.p>
 
-          <motion.div {...fadeUp(0.08)} className="mt-8">
-            <p className="text-xl font-medium tracking-tight text-fg md:text-2xl">Rishabh Shukla</p>
-            <p className="mt-1 font-mono text-xs uppercase tracking-[0.22em] text-cyan">{site.designation}</p>
-          </motion.div>
+        <motion.p {...fadeUp(0.24)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+          I work at the intersection of business strategy, operations, technology and growth. I build business processes,
+          execute go-to-market strategies, manage cross-functional projects and turn ideas into structured execution.
+        </motion.p>
 
-          <motion.h1
-            {...fadeUp(0.14)}
-            className="text-gradient mt-6 text-[2.6rem] font-medium leading-[1] tracking-[-0.035em] sm:text-6xl xl:text-7xl"
+        <motion.div {...fadeUp(0.32)} className="mt-12 flex flex-wrap items-center gap-3">
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-4 text-sm font-semibold text-ink shadow-[0_0_40px_-8px_#3fe0ff] transition hover:bg-white"
           >
-            I build <span className="font-serif font-normal italic text-fg">businesses</span>, systems, products &amp;{" "}
-            <span className="font-serif font-normal italic text-cyan [-webkit-text-fill-color:currentColor]">growth engines.</span>
-          </motion.h1>
+            View My Work
+            <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
+          </a>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-sm font-medium text-fg transition hover:border-fg"
+          >
+            Contact Me
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
-          <motion.p {...fadeUp(0.22)} className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
-            3+ years of startup execution, from launching a doorstep vehicle-service business to building GTM, growth and
-            product systems for early-stage teams.
-          </motion.p>
+const focusAreas: { title: string; icon: LucideIcon }[] = [
+  { title: "Business Strategy & Operations", icon: Cog },
+  { title: "Growth & Go-to-Market", icon: Rocket },
+  { title: "Product & Marketplace Operations", icon: Blocks },
+  { title: "Process Automation & Technology Implementation", icon: LineChart },
+];
 
-          <motion.ul {...fadeUp(0.28)} className="mt-6 flex flex-wrap gap-2" aria-label="Focus areas">
-            {site.positioning.map((p) => (
-              <li key={p} className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-fg/80">
-                {p}
+/** Part of Home: kept short and factual. */
+export function Overview() {
+  return (
+    <section aria-labelledby="overview-title" className="relative border-t border-line py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <Reveal>
+          <p id="overview-title" className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+            Professional overview
+          </p>
+          <p className="mt-6 text-2xl font-medium leading-snug tracking-tight text-fg md:text-3xl">
+            With experience in building and operating businesses, I have worked across business development, growth
+            marketing, marketplace operations, vendor management, customer acquisition and technology implementation.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <ul className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2" aria-label="Focus areas">
+            {focusAreas.map(({ title, icon: Icon }, i) => (
+              <li key={title} className="flex flex-col justify-between gap-10 bg-ink-2 p-7 transition-colors hover:bg-panel">
+                <div className="flex items-center justify-between">
+                  <Icon className="size-5 text-cyan" aria-hidden />
+                  <span className="font-mono text-xs text-dim">0{i + 1}</span>
+                </div>
+                <h3 className="text-lg font-medium leading-snug tracking-tight">{title}</h3>
               </li>
             ))}
-          </motion.ul>
-
-          <motion.div {...fadeUp(0.34)} className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3.5 text-sm font-semibold text-ink shadow-[0_0_40px_-8px_#3fe0ff] transition hover:bg-white"
-            >
-              Explore my work
-              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
-            </a>
-            <a
-              href={asset(site.resume)}
-              download={site.resumeFileName}
-              className="inline-flex items-center gap-2 rounded-full border border-line-strong px-6 py-3.5 text-sm font-medium text-fg transition hover:border-fg"
-            >
-              <Download className="size-4" aria-hidden />
-              Download resume
-            </a>
-            <div className="flex items-center gap-2 sm:ml-1">
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn profile (opens in a new tab)"
-                className="grid size-12 place-items-center rounded-full border border-line text-muted transition hover:border-cyan hover:text-cyan"
-              >
-                <LinkedInIcon className="size-[18px]" />
-              </a>
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub profile (opens in a new tab)"
-                className="grid size-12 place-items-center rounded-full border border-line text-muted transition hover:border-cyan hover:text-cyan"
-              >
-                <GitHubIcon className="size-[18px]" />
-              </a>
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease }}
-          className="mx-auto w-full max-w-[290px] sm:max-w-[360px] lg:mx-0 lg:justify-self-end"
-        >
-          <div className="rounded-[28px] border border-line bg-panel/80 p-3 backdrop-blur">
-            <div className="grid aspect-square place-items-center rounded-[20px] bg-[radial-gradient(circle_at_50%_40%,rgba(63,224,255,0.14),transparent_65%)]">
-              <Portrait priority className="w-[84%]" sizes="(min-width: 1024px) 300px, 70vw" />
-            </div>
-            <div className="px-2 pb-1 pt-4">
-              <p className="text-sm font-medium">{site.designation}</p>
-              <p className="mt-1 flex items-center gap-1.5 text-xs text-muted">
-                <MapPin className="size-3.5 text-cyan" aria-hidden />
-                Lucknow, India · Open to Delhi NCR &amp; Remote
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </ul>
+        </Reveal>
       </div>
     </section>
   );
