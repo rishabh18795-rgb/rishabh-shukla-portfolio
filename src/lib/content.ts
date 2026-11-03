@@ -2,119 +2,146 @@
 // repositories. Nothing here is an estimate: no invented clients, traffic,
 // revenue or user numbers. Update this file when the facts change.
 
+export type EngagementKind = "Operating role" | "Freelance practice" | "Project engagement" | "Consulting engagement" | "Training";
+
 export type Experience = {
+  id: string;
+  name: string;
   role: string;
-  org: string;
-  period: string;
-  place: string;
-  summary: string;
-  points: string[];
-  engagements?: { name: string; role: string; points: string[] }[];
-  more?: string[];
+  kind: EngagementKind;
+  /** Only verified dates. Undefined means the resume gives no separate dates. */
+  period?: string;
+  description: string;
+  highlights: string[];
+  contribution: string;
+  link?: { label: string; href: string };
 };
 
-export const experience: Experience[] = [
+export const coreExperience: Experience[] = [
   {
+    id: "mechservi",
+    name: "MechServi",
     role: "Startup Operations & Growth Lead",
-    org: "MechServi",
+    kind: "Operating role",
     period: "2023 — Present",
-    place: "Lucknow, Uttar Pradesh",
-    summary:
-      "Doorstep automotive service startup offering on-demand bike and car servicing (mechservi.in).",
-    points: [
+    description: "Doorstep bike and car service startup in Lucknow.",
+    highlights: [
       "Led the 0-to-1 launch: vendor onboarding, field staff coordination, booking management and customer acquisition.",
-      "Designed and ran performance marketing funnels on Meta Ads and Google Ads (ads → WhatsApp → confirmed booking), optimising cost-per-lead and conversion workflows.",
-      "Built a mechanic and service-partner network with onboarding SOPs, service pricing, B2B fleet packages and subscription plans.",
-      "Deployed WhatsApp Business API and CRM workflows for customer communication, booking reminders and post-service follow-ups.",
-      "Led cross-functional operations: field execution, complaint resolution, team coordination, vendor SLA management and brand communications.",
-      "Developed B2B outreach to fleet operators, corporate accounts and local businesses.",
-      "Built the brand, website, social media presence, creative and WhatsApp campaigns in-house.",
+      "Built the mechanic partner network with onboarding SOPs, service pricing, B2B fleet packages and subscription plans.",
+      "Ran Meta and Google Ads funnels (ads → WhatsApp → confirmed booking) with WhatsApp Business API and CRM follow-ups.",
     ],
+    contribution: "Took the business from concept to live operations, owning operations, growth and brand end to end.",
+    link: { label: "mechservi.in", href: "https://mechservi.in" },
   },
   {
-    role: "Independent Startup, Technology & Growth Consultant",
-    org: "Freelance",
-    period: "May 2026 — Nov 2026",
-    place: "Independent / Remote",
-    summary:
-      "Project-based engagements with early-stage businesses. Titles show the role held on each engagement, not employment.",
-    points: [],
-    engagements: [
-      {
-        name: "BlooCube",
-        role: "CTO / Technology Lead (project engagement)",
-        points: [
-          "Product architecture for a brand–creator marketplace: registration, authentication and separate dashboards for each side.",
-          "Designed payment and wallet requirements, a commission model (10–15% proposed) and creator withdrawal workflows (₹1,000 minimum).",
-          "Coordinated frontend and backend delivery across GitHub, Vercel and Railway; API debugging and backend integration.",
-        ],
-      },
-      {
-        name: "SetoraHome",
-        role: "Digital Growth & Marketing Consultant",
-        points: [
-          "Customer acquisition strategy, service positioning and Meta Ads lead-generation planning for a Varanasi launch.",
-          "WhatsApp Business setup and catalogue; lead qualification, booking workflow and a 10-minute warm-lead response process.",
-          "AI-assisted video ad concepts, scripts, Hindi voiceovers and creative direction.",
-        ],
-      },
-      {
-        name: "InstaBeam / Beam.Growth",
-        role: "Digital Growth & Technology Consultant",
-        points: [
-          "Positioning, service lines, packages and pricing across web, Shopify, Meta and Google Ads, SEO, Google Business Profile and analytics.",
-          "WhatsApp Business API automation, CRM implementation and lead-management offerings.",
-        ],
-      },
-      {
-        name: "Guerdon Kicks",
-        role: "E-commerce Performance Marketing Consultant",
-        points: [
-          "Meta campaigns across awareness, retargeting and catalogue sales; Pixel and purchase-event tracking diagnostics.",
-          "Catalogue sales campaign: ₹14,497 attributed revenue on ₹7,435 spend (1.94× ROAS, 2.25% CTR).",
-        ],
-      },
-      {
-        name: "Hasiru Nidhi",
-        role: "Website & Digital Product Consultant",
-        points: [
-          "Website structure, contact and booking forms; Vercel deployment with GitHub version control.",
-        ],
-      },
-      {
-        name: "Kumba Gateway",
-        role: "Marketing Funnel & Growth Strategy Consultant",
-        points: [
-          "Full acquisition funnel: Meta ad → landing page → catalogue → WhatsApp chatbot qualification → conversion.",
-        ],
-      },
-      {
-        name: "Meta Classes",
-        role: "Digital Marketing Trainer & Curriculum Developer",
-        points: [
-          "Designed and taught a four-week, 16-session Meta Ads and Google Ads course with handbooks and campaign exercises.",
-        ],
-      },
-    ],
-    more: [
-      "No Means No (international film): digital marketing strategy discussions (proposal stage)",
-      "Rashtriyebharat: social media content and creative",
-      "Yoga / Chakra niche: marketing strategy and an educational handbook",
-    ],
-  },
-  {
+    id: "freelance",
+    name: "Independent Consulting",
     role: "Growth & Digital Marketing Consultant",
-    org: "Independent / Freelance",
+    kind: "Freelance practice",
     period: "2022 — 2023",
-    place: "Remote",
-    summary:
-      "Growth and e-commerce work for SME clients in services, retail, e-commerce, real estate and education.",
-    points: [
+    description: "Growth and e-commerce work for SMEs in services, retail, real estate and education.",
+    highlights: [
       "Managed Meta Ads and Google Ads campaigns focused on ROAS and lead volume.",
-      "Built and launched Shopify stores: product setup, payment integration, theme customisation and initial SEO.",
-      "Developed conversion funnels (awareness → lead capture → purchase) and coached clients on WhatsApp follow-up.",
-      "Delivered SEO, campaign analytics reporting and social media growth strategies.",
+      "Built and launched Shopify stores: product setup, payment integration, theme customisation and SEO.",
+      "Designed conversion funnels and coached clients on WhatsApp follow-up.",
     ],
+    contribution: "Helped offline businesses open online revenue channels through Shopify stores and paid acquisition.",
+  },
+];
+
+/** Engagements from Rishabh's independent consulting period, May – Nov 2026. */
+export const engagementsPeriod = "May 2026 — Nov 2026";
+
+export const engagements: Experience[] = [
+  {
+    id: "bloocube",
+    name: "BlooCube",
+    role: "CTO / Technology Lead",
+    kind: "Project engagement",
+    description: "Brand and creator collaboration marketplace.",
+    highlights: [
+      "Product architecture: brand and creator registration, authentication and separate dashboards.",
+      "Payment and wallet requirements, commission model (10–15% proposed) and withdrawal workflow (₹1,000 minimum).",
+      "Coordinated frontend and backend delivery across GitHub, Vercel and Railway; API debugging and integration.",
+    ],
+    contribution: "Defined the marketplace's monetisation and payout model and brought the platform to a working production deployment.",
+    link: { label: "bloocube.com", href: "https://bloocube.com" },
+  },
+  {
+    id: "setorahome",
+    name: "SetoraHome",
+    role: "Digital Growth & Marketing Consultant",
+    kind: "Consulting engagement",
+    description: "Multi-service home-care brand launching in Varanasi.",
+    highlights: [
+      "Customer acquisition strategy, service positioning and Meta Ads lead-generation planning.",
+      "WhatsApp Business setup and catalogue; lead qualification, booking workflow and follow-up SOPs.",
+      "AI-assisted video ad concepts, scripts, Hindi voiceovers and creative direction.",
+    ],
+    contribution: "Designed the launch GTM: from ad to WhatsApp conversation to booking, with a 10-minute warm-lead response process.",
+    link: { label: "setorahome.com", href: "https://www.setorahome.com" },
+  },
+  {
+    id: "instabeam",
+    name: "InstaBeam / Beam.Growth",
+    role: "Digital Growth & Technology Consultant",
+    kind: "Consulting engagement",
+    description: "Digital marketing and technology services brand. “One Signal. Full Funnel.”",
+    highlights: [
+      "Agency positioning, service lines, packages and pricing across web, Shopify, ads, SEO and analytics.",
+      "WhatsApp Business API automation, CRM implementation and lead-management offerings.",
+    ],
+    contribution: "Packaged growth and technology services into a priced, full-funnel offer.",
+    link: { label: "instabeam.site", href: "https://instabeam.site" },
+  },
+  {
+    id: "guerdon",
+    name: "Guerdon Kicks",
+    role: "E-commerce Performance Marketing Consultant",
+    kind: "Consulting engagement",
+    description: "E-commerce brand.",
+    highlights: [
+      "Meta campaigns across awareness, retargeting and catalogue sales.",
+      "Diagnosed Pixel, purchase-event and catalogue tracking issues; delivered optimisation benchmarks.",
+    ],
+    contribution: "Catalogue sales campaign: ₹14,497 attributed revenue on ₹7,435 spend (1.94× ROAS, 2.25% CTR).",
+  },
+  {
+    id: "hasiru",
+    name: "Hasiru Nidhi",
+    role: "Website & Digital Product Consultant",
+    kind: "Project engagement",
+    description: "Nature stays and experiences company near Bengaluru.",
+    highlights: [
+      "Website structure, contact and booking forms.",
+      "Frontend implementation, Vercel deployment with GitHub version control, ongoing improvements.",
+    ],
+    contribution: "Delivered the live website; Supabase database integration is planned.",
+    link: { label: "hasiru-nidhi.vercel.app", href: "https://hasiru-nidhi.vercel.app" },
+  },
+  {
+    id: "kumba",
+    name: "Kumba Gateway",
+    role: "Marketing Funnel & Growth Strategy Consultant",
+    kind: "Consulting engagement",
+    description: "Funnel strategy and design engagement.",
+    highlights: [
+      "Mapped the journey: Meta ad → landing page → catalogue → WhatsApp chatbot qualification → conversion.",
+      "Landing-page content, CTA strategy, chatbot qualification and retargeting plan.",
+    ],
+    contribution: "Designed a complete acquisition funnel, ready for execution.",
+  },
+  {
+    id: "meta-classes",
+    name: "Meta Classes",
+    role: "Digital Marketing Trainer & Curriculum Developer",
+    kind: "Training",
+    description: "Practical digital advertising course.",
+    highlights: [
+      "Designed and taught a four-week, 16-session course on Meta Ads and Google Ads.",
+      "Built niche-specific handbooks and hands-on campaign exercises.",
+    ],
+    contribution: "Turned campaign experience into a structured, repeatable curriculum.",
   },
 ];
 
@@ -318,95 +345,72 @@ export const moreRepos = [
   },
 ];
 
-export const technicalSkills = [
+export type SkillKind = "hands-on" | "managed" | "capability";
+
+export const skillKinds: Record<SkillKind, { label: string; note: string }> = {
+  "hands-on": { label: "Used hands-on", note: "Appears in my code repositories" },
+  managed: { label: "Platforms managed", note: "Run day to day for businesses" },
+  capability: { label: "Business capability", note: "Demonstrated in operating roles" },
+};
+
+export type SkillGroup = {
+  id: string;
+  title: string;
+  kind: SkillKind;
+  summary: string;
+  items: string[];
+  evidence: string;
+};
+
+export const skillGroups: SkillGroup[] = [
   {
-    title: "Frontend",
-    items: ["Next.js (App Router)", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP", "Responsive UI", "Technical SEO"],
-    evidence: "All five project repositories",
+    id: "frontend",
+    title: "Frontend Development",
+    kind: "hands-on",
+    summary: "Responsive, SEO-ready web apps and marketing sites.",
+    items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML & CSS", "Framer Motion", "GSAP", "Technical SEO"],
+    evidence: "BlooCube, SetoraHome, InstaBeam, Hasiru Nidhi, this site",
   },
   {
-    title: "Backend & APIs",
-    items: ["Express", "NestJS", "Next.js server actions", "REST APIs", "Transactional email (Resend)", "Webhooks"],
-    evidence: "BlooCube, InstaBeam, MechServi platform",
+    id: "backend",
+    title: "Backend Development",
+    kind: "hands-on",
+    summary: "APIs and server logic for marketplaces and lead pipelines.",
+    items: ["Node.js", "Express", "NestJS", "REST APIs", "Next.js server actions", "Prisma ORM", "Transactional email", "Webhooks"],
+    evidence: "BlooCube, InstaBeam, MechServi platform (private)",
   },
   {
-    title: "Database & auth",
-    items: ["Supabase (Postgres, Auth, Storage)", "Row-level security", "Prisma ORM", "PostgreSQL", "SQLite", "JWT & cookie sessions"],
+    id: "data",
+    title: "Database & Authentication",
+    kind: "hands-on",
+    summary: "Relational data, access control and sign-in flows.",
+    items: ["PostgreSQL", "Supabase", "SQLite", "Row-level security", "Supabase Auth", "JWT & cookie sessions"],
     evidence: "Hasiru Nidhi, InstaBeam, BlooCube",
   },
   {
-    title: "Payments & automation",
-    items: ["Wallet, commission & withdrawal logic", "Razorpay (test mode)", "Shopify payments", "WhatsApp Business API", "Google Apps Script"],
-    evidence: "BlooCube, MechServi, Shopify client stores",
+    id: "product",
+    title: "Business & Product Technology",
+    kind: "hands-on",
+    summary: "The systems that make a marketplace or service business run.",
+    items: ["Marketplace architecture", "Wallet, commission & payouts", "Payment gateway integration", "WhatsApp Business API", "CRM implementation", "Automation workflows", "Product development"],
+    evidence: "BlooCube, MechServi, InstaBeam, Shopify stores",
   },
   {
-    title: "Testing & delivery",
-    items: ["Vitest", "Playwright", "GitHub Actions", "Vercel", "Railway", "GitHub"],
-    evidence: "Hasiru Nidhi, BlooCube, this site",
+    id: "growth",
+    title: "Growth & Marketing Technology",
+    kind: "managed",
+    summary: "Acquisition, tracking and conversion platforms.",
+    items: ["Meta Ads Manager", "Google Ads", "Google Analytics 4", "Google Tag Manager", "Meta Pixel & events", "Shopify", "SEO", "Google Business Profile", "Conversion tracking"],
+    evidence: "MechServi, Guerdon Kicks, SetoraHome, client stores",
   },
   {
-    title: "Marketing technology",
-    items: ["Meta Pixel & events", "GA4", "Google Tag Manager", "Google Business Profile", "Shopify", "Veblika CRM"],
-    evidence: "InstaBeam, Guerdon Kicks, MechServi",
+    id: "operations",
+    title: "Business Operations",
+    kind: "capability",
+    summary: "Strategy and execution behind the numbers.",
+    items: ["Startup operations", "GTM strategy", "Business development", "Revenue strategy", "Vendor management", "Process design & SOPs", "Team management", "Customer acquisition"],
+    evidence: "MechServi, SetoraHome, consulting engagements",
   },
 ];
 
-export const businessSkills = [
-  {
-    title: "Startup & business operations",
-    items: ["0-to-1 startup building", "Founder's office operations", "Business model development", "Revenue strategy", "Vendor management", "Process & SOP development"],
-  },
-  {
-    title: "Growth & performance marketing",
-    items: ["Meta Ads", "Google Ads", "Conversion funnels", "Retargeting", "Custom & lookalike audiences", "ROAS optimisation"],
-  },
-  {
-    title: "Product & delivery",
-    items: ["Product strategy", "Marketplace design", "Requirements from business models", "Frontend/backend coordination", "Deployment"],
-  },
-  {
-    title: "Leadership & consulting",
-    items: ["Client management", "Cross-functional coordination", "Field team leadership", "Creative direction", "Digital marketing training"],
-  },
-];
-
-export const growthPillars = [
-  {
-    title: "Performance marketing",
-    body: "Meta and Google campaigns across awareness, retargeting and catalogue sales, with custom and lookalike audiences.",
-    proof: "Guerdon Kicks catalogue campaign: 1.94× ROAS",
-  },
-  {
-    title: "Acquisition funnels",
-    body: "Ads → WhatsApp → booking funnels that turn local intent into confirmed jobs, with clear hand-offs at each step.",
-    proof: "MechServi, SetoraHome, Kumba Gateway",
-  },
-  {
-    title: "WhatsApp automation",
-    body: "WhatsApp Business API, catalogues, chatbot qualification, reminders and post-service follow-ups.",
-    proof: "MechServi CRM workflows",
-  },
-  {
-    title: "Vendor ecosystems",
-    body: "Recruiting, onboarding and pricing a mechanic and service-partner network, with SLAs and quality control.",
-    proof: "MechServi partner network",
-  },
-  {
-    title: "B2B development",
-    body: "Fleet packages, subscription plans and outreach to fleet operators, corporate accounts and local businesses.",
-    proof: "MechServi B2B fleet packages",
-  },
-  {
-    title: "Process automation",
-    body: "Lead capture into CRM tables, automated email notifications, admin dashboards and repeatable SOPs.",
-    proof: "InstaBeam leads pipeline",
-  },
-];
-
-export const funnel = [
-  { step: "Ad", detail: "Meta / Google" },
-  { step: "Conversation", detail: "WhatsApp, landing page" },
-  { step: "Qualify", detail: "Chatbot, 10-min call-back" },
-  { step: "Book", detail: "Confirmed job" },
-  { step: "Retain", detail: "Reminders, subscriptions" },
-];
+export const deliveryTools = ["GitHub", "GitHub Actions", "Vercel", "Railway", "Vitest", "Playwright"];
