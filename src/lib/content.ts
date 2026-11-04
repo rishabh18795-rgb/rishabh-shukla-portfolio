@@ -179,12 +179,6 @@ export const projects: Project[] = [
     kicker: "Automotive services · 2023 → present",
     tagline: "A connected vehicle-care marketplace in Lucknow, linking vehicle owners, garages and service partners through customer and partner apps.",
     status: { label: "Live business", tone: "live" },
-    results: [
-      { value: "1,000+", label: "Customers served" },
-      { value: "400+", label: "Subscription plans" },
-      { value: "38%", label: "Retention" },
-      { value: "4,799", label: "Ad chat enquiries" },
-    ],
     caseStudy: "/mechservi/",
     role: "Founder & CEO",
     problem:

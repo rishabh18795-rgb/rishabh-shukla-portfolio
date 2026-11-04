@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Blocks, Cog, LineChart, MapPin, Rocket, type LucideIcon } from "lucide-react";
-import { traction } from "@/lib/mechservi";
-import { site } from "@/lib/site";
+import { asset, site } from "@/lib/site";
 import { Reveal } from "./ui";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -112,25 +112,42 @@ export function Overview() {
         </Reveal>
 
         <Reveal className="lg:col-span-2">
-          <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">MechServi traction</p>
-            <Link href="/mechservi/" className="group inline-flex items-center gap-1.5 text-sm font-medium text-cyan hover:text-fg">
-              Sources & methodology
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-            </Link>
-          </div>
-          <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4">
-            {traction.map((m) => (
-              <div key={m.label} className="bg-ink-2 p-6 md:p-7">
-                <dt className="sr-only">{m.label}</dt>
-                <dd>
-                  <span className="block font-serif text-4xl italic leading-none md:text-5xl">{m.value}</span>
-                  <span className="mt-3 block font-medium tracking-tight">{m.label}</span>
-                  <span className="mt-1 block text-xs leading-relaxed text-muted">{m.note}</span>
-                </dd>
+          <Link
+            href="/mechservi/"
+            aria-label="Explore MechServi case study"
+            className="group grid overflow-hidden rounded-3xl border border-line bg-ink-2 transition-colors hover:border-cyan/50 lg:grid-cols-[1fr_1.05fr]"
+          >
+            <div className="flex flex-col justify-center p-7 md:p-10">
+              <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-cyan">
+                <span className="h-px w-8 bg-cyan/60" aria-hidden />
+                Featured case study
+              </p>
+              <h2 className="mt-5 text-2xl font-medium leading-snug tracking-tight text-fg md:text-3xl">
+                MechServi – Building a connected{" "}
+                <span className="font-serif font-normal italic text-cyan">vehicle-care marketplace</span>
+              </h2>
+              <p className="mt-4 max-w-xl leading-relaxed text-muted">
+                Developed a technology-enabled vehicle-care business connecting customers, garages and service partners
+                through digital platforms, performance marketing, WhatsApp automation and operational systems.
+              </p>
+              <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan transition group-hover:text-fg">
+                Explore MechServi Case Study
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
+              </span>
+            </div>
+            <div className="relative border-t border-line bg-panel p-5 md:p-7 lg:border-l lg:border-t-0">
+              <div className="overflow-hidden rounded-xl border border-line shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]">
+                <Image
+                  src={asset("/mechservi/website-hero.jpg")}
+                  alt="MechServi website: doorstep vehicle-care services in Lucknow"
+                  width={1184}
+                  height={740}
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
+                />
               </div>
-            ))}
-          </dl>
+            </div>
+          </Link>
         </Reveal>
       </div>
     </section>
