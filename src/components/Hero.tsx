@@ -7,25 +7,6 @@ import { traction } from "@/lib/mechservi";
 import { site } from "@/lib/site";
 import { Reveal } from "./ui";
 
-const paths = [
-  {
-    label: "For recruiters",
-    body: "Roles, responsibilities and results across operations, growth and technology execution.",
-    links: [
-      { text: "Experience", href: "#experience" },
-      { text: "Projects", href: "#projects" },
-    ],
-  },
-  {
-    label: "For founders & investors",
-    body: "How I built MechServi, a connected vehicle-care marketplace, from concept to customer and partner apps.",
-    links: [
-      { text: "MechServi case study", href: "/mechservi/" },
-      { text: "Ventures", href: "#projects" },
-    ],
-  },
-];
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = (delay: number) => ({
@@ -41,60 +22,49 @@ export function Hero() {
       <div className="glow-cyan pointer-events-none absolute -top-40 left-1/2 h-[640px] w-[1000px] -translate-x-1/2" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 md:px-8">
-        <motion.p {...fadeUp(0)} className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.28em] text-cyan">
-          <span className="h-px w-10 bg-cyan/60" aria-hidden />
-          {site.designation}
+        <motion.p {...fadeUp(0)} className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan sm:text-xs sm:tracking-[0.28em]">
+          <span className="h-px w-6 shrink-0 bg-cyan/60 sm:w-10" aria-hidden />
+          Strategy, Operations &amp; Growth
+        </motion.p>
+
+        <motion.p
+          {...fadeUp(0.08)}
+          className="mt-8 text-3xl font-medium tracking-[-0.03em] text-fg md:text-4xl"
+        >
+          Rishabh <span className="font-serif font-normal italic">Shukla</span>
         </motion.p>
 
         <motion.h1
-          {...fadeUp(0.08)}
-          className="text-gradient mt-8 text-[3.4rem] font-medium leading-[0.92] tracking-[-0.045em] sm:text-7xl md:text-8xl xl:text-[9.5rem]"
+          {...fadeUp(0.16)}
+          className="text-gradient mt-5 max-w-5xl text-[2.6rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-6xl md:text-7xl"
         >
-          Rishabh <span className="font-serif font-normal italic text-fg">Shukla</span>
+          Turning business ideas into execution,{" "}
+          <span className="font-serif font-normal italic text-cyan [-webkit-text-fill-color:currentColor]">growth and results.</span>
         </motion.h1>
 
-        <motion.p {...fadeUp(0.16)} className="mt-8 max-w-4xl text-2xl font-medium leading-snug tracking-tight text-fg md:text-4xl">
-          I build businesses, growth systems and{" "}
-          <span className="font-serif font-normal italic text-cyan">digital products.</span>
+        <motion.p {...fadeUp(0.24)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+          I work across business operations, performance marketing and digital product development, helping businesses
+          acquire customers, improve processes and execute technology-driven initiatives.
         </motion.p>
 
-        <motion.div {...fadeUp(0.24)} className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-muted md:text-xl">
-          <p>
-            Founder-led experience across business strategy, performance marketing, product development and operations —
-            turning business ideas into functioning systems and measurable customer experiences.
-          </p>
-          <p className="text-base md:text-lg">
-            From acquiring the first customer to developing digital platforms, automating workflows and managing operations,
-            I work at the intersection of business, growth and technology.
-          </p>
-        </motion.div>
-
-        <motion.div {...fadeUp(0.32)} className="mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
-          {paths.map((p) => (
-            <div key={p.label} className="rounded-3xl border border-line bg-white/[0.02] p-5 backdrop-blur-sm md:p-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan">{p.label}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.links.map((l, i) => {
-                  const cls =
-                    i === 0
-                      ? "group inline-flex items-center gap-2 rounded-full bg-cyan px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-white"
-                      : "group inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-2.5 text-sm font-medium text-fg transition hover:border-fg";
-                  const inner = (
-                    <>
-                      {l.text}
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                    </>
-                  );
-                  return l.href.startsWith("#") ? (
-                    <a key={l.href} href={l.href} className={cls}>{inner}</a>
-                  ) : (
-                    <Link key={l.href} href={l.href} className={cls}>{inner}</Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+        <motion.div {...fadeUp(0.32)} className="mt-10 flex flex-wrap items-center gap-3">
+          <a
+            href="#experience"
+            className="group inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-4 text-sm font-semibold text-ink shadow-[0_0_40px_-8px_#3fe0ff] transition hover:bg-white"
+          >
+            View Experience
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </a>
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-sm font-medium text-fg transition hover:border-fg"
+          >
+            Explore Projects
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </a>
+          <a href="#contact" className="px-3 py-4 text-sm font-medium text-muted transition hover:text-fg">
+            Contact
+          </a>
         </motion.div>
         <motion.p {...fadeUp(0.4)} className="mt-8 flex items-center gap-2 text-sm text-muted">
           <MapPin className="size-4 text-cyan" aria-hidden />
