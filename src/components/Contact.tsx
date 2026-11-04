@@ -24,21 +24,22 @@ export function Contact() {
             Contact
           </p>
           <h2 className="mt-6 text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-            Let&apos;s build something{" "}
-            <span className="font-serif font-normal italic text-cyan">meaningful</span>.
+            Let&apos;s discuss{" "}
+            <span className="font-serif font-normal italic text-cyan">opportunities</span>.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-            I&apos;m open to startup opportunities, business collaborations and professional conversations. If
-            you&apos;re building something that needs strategy and execution, I&apos;d like to hear about it.
+            I&apos;m looking for Founder&apos;s Office, Strategy &amp; Operations, Business Operations, Growth and
+            Business Development roles at funded technology companies. If your team needs someone who can own
+            execution across functions, let&apos;s talk.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
             <li className="flex items-start gap-3 text-fg/85">
               <MapPin className="mt-0.5 size-4 shrink-0 text-cyan" aria-hidden />
-              Lucknow, India · Open to Delhi NCR and remote
+              Lucknow, India · Open to relocate to Delhi NCR, Bengaluru or remote
             </li>
             <li className="flex items-start gap-3 text-fg/85">
               <Briefcase className="mt-0.5 size-4 shrink-0 text-cyan" aria-hidden />
-              Open to Founder&apos;s Office, Business Operations, Growth and Strategy roles
+              Open to immediate relocation
             </li>
           </ul>
         </Reveal>

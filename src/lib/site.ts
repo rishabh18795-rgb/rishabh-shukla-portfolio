@@ -6,10 +6,10 @@ export const asset = (path: string) => `${BASE_PATH}${path}`;
 export const site = {
   name: "Rishabh Shukla",
   url: "https://rishabh18795-rgb.github.io/rishabh-shukla-portfolio",
-  title: "Rishabh Shukla — Strategy & Operations Lead",
+  title: "Rishabh Shukla — Business Operator | Strategy, Operations & Growth",
   description:
-    "Rishabh Shukla is a strategy and operations professional from Lucknow, India, with 3+ years of startup execution across business growth, product and marketplace operations, GTM strategy and technology implementation.",
-  designation: "Strategy & Operations Lead",
+    "Rishabh Shukla is an entrepreneur and business operator from Lucknow, India: founder of MechServi, with hands-on experience in startup building, strategy and operations, growth and GTM, digital products and business development.",
+  designation: "Founder-Level Business Operator · Strategy, Operations & Growth",
   headline: ["Business Strategy & Operations", "Growth & Performance Marketing", "Product & Technology Execution"],
   location: "Lucknow, Uttar Pradesh, India",
   availability: "Open to immediate relocation · Delhi NCR, Bengaluru or remote",

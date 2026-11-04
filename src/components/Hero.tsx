@@ -7,6 +7,8 @@ import { ArrowRight, Blocks, Cog, LineChart, MapPin, Rocket, type LucideIcon } f
 import { asset, site } from "@/lib/site";
 import { Reveal } from "./ui";
 
+const expertise = ["Startup Building", "Strategy & Operations", "Growth & GTM", "Digital Products", "Business Development"];
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = (delay: number) => ({
@@ -22,51 +24,63 @@ export function Hero() {
       <div className="glow-cyan pointer-events-none absolute -top-40 left-1/2 h-[640px] w-[1000px] -translate-x-1/2" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 md:px-8">
-        <motion.p {...fadeUp(0)} className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan sm:text-xs sm:tracking-[0.28em]">
-          <span className="h-px w-6 shrink-0 bg-cyan/60 sm:w-10" aria-hidden />
-          Strategy, Operations &amp; Growth
+        <motion.p
+          {...fadeUp(0)}
+          className="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.12em] text-cyan sm:text-xs sm:tracking-[0.28em]"
+        >
+          <span className="hidden h-px w-10 shrink-0 bg-cyan/60 sm:block" aria-hidden />
+          Strategy · Business Operations · Growth
         </motion.p>
 
-        <motion.p
-          {...fadeUp(0.08)}
-          className="mt-8 text-3xl font-medium tracking-[-0.03em] text-fg md:text-4xl"
-        >
+        <motion.p {...fadeUp(0.06)} className="mt-8 text-3xl font-medium tracking-[-0.03em] text-fg md:text-4xl">
           Rishabh <span className="font-serif font-normal italic">Shukla</span>
         </motion.p>
 
         <motion.h1
-          {...fadeUp(0.16)}
-          className="text-gradient mt-5 max-w-5xl text-[2.6rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-6xl md:text-7xl"
+          {...fadeUp(0.12)}
+          className="mt-5 max-w-5xl text-[2.4rem] font-medium leading-[1.06] tracking-[-0.035em] text-fg sm:text-6xl md:text-[4.25rem]"
         >
-          Turning business ideas into execution,{" "}
-          <span className="font-serif font-normal italic text-cyan [-webkit-text-fill-color:currentColor]">growth and results.</span>
+          I build businesses, <span className="font-serif font-normal italic text-cyan">drive growth</span>{" "}
+          <span className="text-fg/75">and turn strategy into</span>{" "}
+          <span className="font-serif font-normal italic text-cyan">execution.</span>
         </motion.h1>
 
-        <motion.p {...fadeUp(0.24)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-          I work across business operations, performance marketing and digital product development, helping businesses
-          acquire customers, improve processes and execute technology-driven initiatives.
+        <motion.p {...fadeUp(0.18)} className="mt-8 max-w-3xl text-lg leading-relaxed text-fg/70 md:text-xl md:leading-relaxed">
+          An entrepreneur and business operator with hands-on experience building ventures, developing digital products,
+          driving customer acquisition, establishing operational systems and growing business partnerships. I combine
+          strategic thinking with execution to turn business opportunities into measurable outcomes.
         </motion.p>
 
-        <motion.div {...fadeUp(0.32)} className="mt-10 flex flex-wrap items-center gap-3">
+        <motion.ul
+          {...fadeUp(0.24)}
+          aria-label="Areas of expertise"
+          className="mt-8 flex max-w-4xl flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-4 font-mono text-[11px] uppercase tracking-[0.12em] text-fg/80 sm:text-xs"
+        >
+          {expertise.map((e, i) => (
+            <li key={e} className="flex items-center gap-4 whitespace-nowrap">
+              {e}
+              {i < expertise.length - 1 && <span className="size-1 rounded-full bg-cyan/70" aria-hidden />}
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.div {...fadeUp(0.3)} className="mt-10 flex flex-wrap items-center gap-3">
           <a
-            href="#experience"
+            href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-4 text-sm font-semibold text-ink shadow-[0_0_40px_-8px_#3fe0ff] transition hover:bg-white"
           >
-            View Experience
+            Let&apos;s Discuss Opportunities
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </a>
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-sm font-medium text-fg transition hover:border-fg"
           >
-            Explore Projects
+            Explore My Work
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </a>
-          <a href="#contact" className="px-3 py-4 text-sm font-medium text-muted transition hover:text-fg">
-            Contact
-          </a>
         </motion.div>
-        <motion.p {...fadeUp(0.4)} className="mt-8 flex items-center gap-2 text-sm text-muted">
+        <motion.p {...fadeUp(0.36)} className="mt-6 flex items-center gap-2 text-sm text-muted">
           <MapPin className="size-4 text-cyan" aria-hidden />
           {site.availability}
         </motion.p>
@@ -75,11 +89,27 @@ export function Hero() {
   );
 }
 
-const focusAreas: { title: string; icon: LucideIcon }[] = [
-  { title: "Business Strategy & Operations", icon: Cog },
-  { title: "Growth & Go-to-Market", icon: Rocket },
-  { title: "Product & Marketplace Operations", icon: Blocks },
-  { title: "Process Automation & Technology Implementation", icon: LineChart },
+const focusAreas: { title: string; body: string; icon: LucideIcon }[] = [
+  {
+    title: "Startup building & strategy",
+    body: "Founded and ran MechServi: business model, service design, pricing structure and partnerships.",
+    icon: Rocket,
+  },
+  {
+    title: "Operations & systems",
+    body: "SOPs, vendor onboarding, field-team coordination, CRM and WhatsApp workflows that run without constant oversight.",
+    icon: Cog,
+  },
+  {
+    title: "Growth & go-to-market",
+    body: "Meta and Google Ads, WhatsApp-first funnels and local launch plans for MechServi, SetoraHome and InstaBeam.",
+    icon: LineChart,
+  },
+  {
+    title: "Digital products",
+    body: "Requirements, architecture and delivery for marketplaces and apps, from MechServi's customer and partner apps to BlooCube.",
+    icon: Blocks,
+  },
 ];
 
 /** Part of Home: kept short and factual. */
@@ -89,23 +119,32 @@ export function Overview() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
           <p id="overview-title" className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
-            Professional overview
+            What I bring
           </p>
           <p className="mt-6 text-2xl font-medium leading-snug tracking-tight text-fg md:text-3xl">
-            With experience in building and operating businesses, I have worked across business development, growth
-            marketing, marketplace operations, vendor management, customer acquisition and technology implementation.
+            I take ownership of a business problem end to end:{" "}
+            <span className="text-fg/60">
+              set the strategy, build the systems and products, acquire the customers and run the operations.
+            </span>
+          </p>
+          <p className="mt-6 max-w-lg leading-relaxed text-muted">
+            Experience across a founded startup, independent consulting and product engagements, working directly with
+            founders, partners, field teams and developers.
           </p>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <ul className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2" aria-label="Focus areas">
-            {focusAreas.map(({ title, icon: Icon }, i) => (
-              <li key={title} className="flex flex-col justify-between gap-10 bg-ink-2 p-7 transition-colors hover:bg-panel">
+          <ul className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2" aria-label="Capabilities">
+            {focusAreas.map(({ title, body, icon: Icon }, i) => (
+              <li key={title} className="flex flex-col gap-6 bg-ink-2 p-7 transition-colors hover:bg-panel">
                 <div className="flex items-center justify-between">
                   <Icon className="size-5 text-cyan" aria-hidden />
                   <span className="font-mono text-xs text-dim">0{i + 1}</span>
                 </div>
-                <h3 className="text-lg font-medium leading-snug tracking-tight">{title}</h3>
+                <div>
+                  <h3 className="text-lg font-medium leading-snug tracking-tight">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
+                </div>
               </li>
             ))}
           </ul>
