@@ -25,7 +25,7 @@ export const headline = [
   { value: "28%", label: "Repeat booking rate", note: "94 of 336 one-time customers booked again" },
   { value: "20 days", label: "Median time to rebook", note: "Across customers with a second dated booking" },
   { value: "91", label: "Subscription customers", note: "Monthly plans with wash-level tracking" },
-  { value: "870K+", label: "Meta views in one month", note: "Facebook + Instagram, October 2025" },
+  { value: "4,799", label: "Ad-driven chat enquiries", note: "Messaging conversations from Meta ads, all campaigns" },
 ];
 
 export const records = {
@@ -80,20 +80,36 @@ export const marketing = {
     { value: "141.8K", label: "Facebook views", detail: "Watch time up 64%" },
     { value: "+64%", label: "Google Business Profile calls", detail: "11 → 18 calls month on month" },
   ],
+  /** Meta Ads Manager export, account lifetime (Oct 2023 – Nov 2026). */
+  lifetime: [
+    { value: "2.16M", label: "Impressions", detail: "15 campaigns · 821.8K unique reach" },
+    { value: "16,550", label: "Link clicks", detail: "0.77% link CTR · ~₹5 per click" },
+    { value: "4,799", label: "Chat conversations", detail: "9 messaging campaigns · ~₹14 each" },
+    { value: "4,871", label: "Profile visits", detail: "Festival & traffic campaigns" },
+  ],
+  /** Meta Ads Manager export for the operating-records window. */
+  window: [
+    { value: "2,235", label: "Chat conversations", detail: "Nov 2025 – Apr 2026 · ~₹18 each" },
+    { value: "₹6.29", label: "Cost per link click", detail: "6,735 link clicks · 0.76% CTR" },
+    { value: "15%", label: "Conversation → new customer", detail: "337 new customers ÷ 2,235 chats (blended)" },
+    { value: "~₹126", label: "Ad cost per new customer", detail: "Blended: ad spend ÷ all new customers" },
+  ],
   localities: ["Indira Nagar", "Gomti Nagar", "Hazratganj", "Mahanagar", "Aliganj", "Ashiyana"],
   source: "MechServi monthly Meta & Google Business Profile reports, October–November 2025",
+  adsSource: "Meta Ads Manager campaign exports (account lifetime, and 1 Nov 2025 – 29 Apr 2026)",
 };
 
-/** Evidence available for each funnel stage. Periods differ; not one cohort. */
-export const funnel: { stage: string; evidence: string; status: "verified" | "not-tracked" }[] = [
-  { stage: "Campaign", evidence: "Local Meta campaigns, Lucknow localities", status: "verified" },
-  { stage: "Local reach", evidence: "325.1K Instagram reach (Oct 2025)", status: "verified" },
-  { stage: "Engagement", evidence: "16.8K Instagram interactions (Oct 2025)", status: "verified" },
-  { stage: "Enquiries", evidence: "WhatsApp + calls; not logged per campaign", status: "not-tracked" },
-  { stage: "Customers", evidence: "402 unique customers in service records", status: "verified" },
+/** Funnel for one window, Nov 2025 – Apr 2026: Ads Manager export + operating records. */
+export const funnel: { stage: string; evidence: string; status: "verified" | "not-tracked" | "withheld" }[] = [
+  { stage: "Campaigns", evidence: "8 local Meta campaigns with delivery", status: "verified" },
+  { stage: "Local reach", evidence: "361.8K people reached · 888K impressions", status: "verified" },
+  { stage: "Clicks", evidence: "6,735 link clicks · 0.76% CTR", status: "verified" },
+  { stage: "Enquiries", evidence: "2,235 chat conversations started from ads", status: "verified" },
+  { stage: "New customers", evidence: "337 first-time customers in service records", status: "verified" },
   { stage: "Completed services", evidence: "389 completed one-time services", status: "verified" },
   { stage: "Repeat customers", evidence: "94 repeat one-time customers", status: "verified" },
   { stage: "Subscribers", evidence: "91 monthly subscription customers", status: "verified" },
+  { stage: "Revenue & ROAS", evidence: "Withheld: this page publishes no revenue or prices", status: "withheld" },
 ];
 
 export const whatsappFlow: { step: string; detail: string; status: Status }[] = [
@@ -198,7 +214,7 @@ export const creatives = [
 
 export const learnings = [
   { title: "Retention beats acquisition spend", body: "Ad reach peaked in October, but by March nearly half of active customers were returning ones. Follow-up discipline mattered more than new campaigns." },
-  { title: "Track the middle of the funnel", body: "Reach and bookings were measured; enquiries per campaign were not. Next time every WhatsApp lead gets a source tag from day one." },
+  { title: "Connect the ad to the customer", body: "Meta counted 2,235 conversations and the CRM counted 337 new customers, but nothing linked the two. Next time every WhatsApp lead gets a source tag, so conversion is measured per campaign instead of blended." },
   { title: "Standardise before you scale", body: "SOPs, scripts and trackers came first, so new agents and vendors could deliver the same service without me on every job." },
   { title: "Validate with operations, then build the platform", body: "Spreadsheets and WhatsApp proved the workflows; the platform now encodes them as bookings, subscriptions and commissions." },
 ];
@@ -208,6 +224,7 @@ export const method = [
   "The largest snapshot of each tracker was used (490 and 162 records). Versions were compared, not added: across all versions only one additional customer appears.",
   "Customers were de-duplicated by the last 10 digits of their phone number; 6 subscription rows without a phone number were excluded from customer counts.",
   "“Completed” means the record's remark is “done”. Utilisation uses only the 40 plan rows that log both included and used washes.",
-  "No CPC, CPL, cost per booking or ROAS is shown: campaign spend and per-campaign enquiries were not available. Customer lifetime value is shown as a framework only for the same reason.",
+  "Ad metrics come from Meta Ads Manager exports. Cost figures are per-unit efficiency ratios (per click, per conversation, per new customer); total spend is not shown. Conversion and cost per new customer are blended: they divide by all new customers, whatever channel brought them.",
+  "ROAS and customer lifetime value are not shown, because they need revenue figures and this page publishes no prices or revenue.",
   "April 2026 is a partial month. No prices, customer names, phone numbers or addresses appear anywhere on this page.",
 ];

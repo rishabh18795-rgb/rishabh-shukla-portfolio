@@ -183,7 +183,7 @@ export const projects: Project[] = [
       { value: "402", label: "Unique customers" },
       { value: "389", label: "Completed services" },
       { value: "28%", label: "Repeat rate" },
-      { value: "870K+", label: "Meta views / month" },
+      { value: "4,799", label: "Ad chat enquiries" },
     ],
     caseStudy: "/mechservi/",
     role: "Founder & CEO",

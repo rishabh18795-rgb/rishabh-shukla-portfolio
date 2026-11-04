@@ -139,7 +139,7 @@ export function FlowChain({ steps, numbered = true }: { steps: string[]; numbere
   );
 }
 
-export function FunnelEvidence({ rows }: { rows: { stage: string; evidence: string; status: "verified" | "not-tracked" }[] }) {
+export function FunnelEvidence({ rows }: { rows: { stage: string; evidence: string; status: "verified" | "not-tracked" | "withheld" }[] }) {
   return (
     <Reveal className="overflow-hidden rounded-3xl border border-line">
       <ol>
@@ -158,7 +158,7 @@ export function FunnelEvidence({ rows }: { rows: { stage: string; evidence: stri
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-amber">
-                  <CircleDashed className="size-3.5" aria-hidden /> Not tracked
+                  <CircleDashed className="size-3.5" aria-hidden /> {r.status === "withheld" ? "Not published" : "Not tracked"}
                 </span>
               )}
             </span>

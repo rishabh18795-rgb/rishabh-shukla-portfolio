@@ -40,7 +40,7 @@ import { asset, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "MechServi case study — Rishabh Shukla",
   description:
-    "How Rishabh Shukla built and operated MechServi, a doorstep vehicle-care business in Lucknow: 402 unique customers, 389 completed services, a 28% repeat rate and 870K+ monthly Meta views.",
+    "How Rishabh Shukla built and operated MechServi, a doorstep vehicle-care business in Lucknow: 402 unique customers, 389 completed services, a 28% repeat rate and 4,799 ad-driven chat enquiries.",
   alternates: { canonical: "mechservi/" },
   openGraph: {
     type: "article",
@@ -126,7 +126,7 @@ export default function MechServiCaseStudy() {
               <StatGrid items={headline} />
             </div>
             <Reveal className="mt-4 text-xs text-dim">
-              Operating records {records.period}. Marketing figures from October 2025. Methodology at the end of this page.
+              Operating records {records.period}. Ad enquiries from Meta Ads Manager. Methodology at the end of this page.
             </Reveal>
 
             <nav aria-label="Case study sections" className="mt-12 flex flex-wrap gap-2">
@@ -224,11 +224,20 @@ export default function MechServiCaseStudy() {
           id="growth"
           index="03"
           label="Performance marketing & local growth"
-          title={<>Hyperlocal Meta campaigns reached <span className="font-serif font-normal italic text-cyan">870K+ views</span> in a month.</>}
+          title={<>Hyperlocal ads that started <span className="font-serif font-normal italic text-cyan">4,799 conversations</span>.</>}
           intro={`Facebook and Instagram campaigns targeted Lucknow localities (${marketing.localities.join(", ")}), with Google Business Profile for local search. Creatives pushed one action: message on WhatsApp or call to book.`}
         >
           <Reveal>
-            <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">October 2025</h3>
+            <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Operating window · Nov 2025 – Apr 2026</h3>
+          </Reveal>
+          <StatGrid items={marketing.window} cols={4} />
+          <Reveal>
+            <h3 className="mb-4 mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Ads account lifetime · Oct 2023 – Nov 2026</h3>
+          </Reveal>
+          <StatGrid items={marketing.lifetime} cols={4} />
+          <Reveal className="mt-4 text-xs text-dim">Source: {marketing.adsSource}.</Reveal>
+          <Reveal>
+            <h3 className="mb-4 mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Organic + paid reach · October 2025</h3>
           </Reveal>
           <StatGrid items={marketing.october} cols={4} />
           <Reveal>
@@ -240,8 +249,8 @@ export default function MechServiCaseStudy() {
           <Reveal>
             <h3 className="mb-2 mt-16 text-2xl font-medium tracking-tight">From campaign to repeat customer</h3>
             <p className="mb-6 max-w-2xl text-sm leading-relaxed text-muted">
-              The evidence for each stage of the funnel. Stages come from different periods, so this is not one cohort, and
-              per-campaign enquiries weren&apos;t logged, so CPL, cost per booking and ROAS are not claimed.
+              One window, November 2025 – April 2026: ad data from Meta Ads Manager, customers and services from the operating
+              records. Customers arrive through every channel, so ad-to-customer conversion is blended.
             </p>
           </Reveal>
           <FunnelEvidence rows={funnel} />
