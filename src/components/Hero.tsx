@@ -2,10 +2,29 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Blocks, Cog, LineChart, MapPin, Rocket, type LucideIcon } from "lucide-react";
-import { headline as mechservi } from "@/lib/mechservi";
+import { ArrowRight, Blocks, Cog, LineChart, MapPin, Rocket, type LucideIcon } from "lucide-react";
+import { traction } from "@/lib/mechservi";
 import { site } from "@/lib/site";
 import { Reveal } from "./ui";
+
+const paths = [
+  {
+    label: "For recruiters",
+    body: "Roles, responsibilities and results across operations, growth and technology execution.",
+    links: [
+      { text: "Experience", href: "#experience" },
+      { text: "Projects", href: "#projects" },
+    ],
+  },
+  {
+    label: "For founders & investors",
+    body: "How I built MechServi, a connected vehicle-care marketplace, from concept to customer and partner apps.",
+    links: [
+      { text: "MechServi case study", href: "/mechservi/" },
+      { text: "Ventures", href: "#projects" },
+    ],
+  },
+];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -34,42 +53,48 @@ export function Hero() {
           Rishabh <span className="font-serif font-normal italic text-fg">Shukla</span>
         </motion.h1>
 
-        <motion.p
-          {...fadeUp(0.16)}
-          className="mt-8 flex flex-col gap-1 text-xl font-medium tracking-tight text-fg sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 md:text-2xl"
-        >
-          {site.headline.map((h, i) => (
-            <span key={h} className="flex items-center gap-4">
-              {i > 0 && <span className="hidden text-cyan/70 sm:inline" aria-hidden>|</span>}
-              {h}
-            </span>
+        <motion.p {...fadeUp(0.16)} className="mt-8 max-w-4xl text-2xl font-medium leading-snug tracking-tight text-fg md:text-4xl">
+          I build businesses, growth systems and{" "}
+          <span className="font-serif font-normal italic text-cyan">digital products.</span>
+        </motion.p>
+
+        <motion.div {...fadeUp(0.24)} className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-muted md:text-xl">
+          <p>
+            Founder-led experience across business strategy, performance marketing, product development and operations —
+            turning business ideas into functioning systems and measurable customer experiences.
+          </p>
+          <p className="text-base md:text-lg">
+            From acquiring the first customer to developing digital platforms, automating workflows and managing operations,
+            I work at the intersection of business, growth and technology.
+          </p>
+        </motion.div>
+
+        <motion.div {...fadeUp(0.32)} className="mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
+          {paths.map((p) => (
+            <div key={p.label} className="rounded-3xl border border-line bg-white/[0.02] p-5 backdrop-blur-sm md:p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan">{p.label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {p.links.map((l, i) => {
+                  const cls =
+                    i === 0
+                      ? "group inline-flex items-center gap-2 rounded-full bg-cyan px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-white"
+                      : "group inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-2.5 text-sm font-medium text-fg transition hover:border-fg";
+                  const inner = (
+                    <>
+                      {l.text}
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                    </>
+                  );
+                  return l.href.startsWith("#") ? (
+                    <a key={l.href} href={l.href} className={cls}>{inner}</a>
+                  ) : (
+                    <Link key={l.href} href={l.href} className={cls}>{inner}</Link>
+                  );
+                })}
+              </div>
+            </div>
           ))}
-        </motion.p>
-
-        <motion.p {...fadeUp(0.24)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-          I don&apos;t just plan strategy. As founder of MechServi I built the business systems, ran the growth campaigns,
-          shipped the digital platforms and managed real-world operations, serving{" "}
-          <span className="text-fg">402 customers with a 28% repeat rate</span>.
-        </motion.p>
-
-        <motion.div {...fadeUp(0.32)} className="mt-12 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-4 text-sm font-semibold text-ink shadow-[0_0_40px_-8px_#3fe0ff] transition hover:bg-white"
-          >
-            View My Work
-            <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
-          </a>
-          <Link
-            href="/mechservi/"
-            className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-sm font-medium text-fg transition hover:border-fg"
-          >
-            MechServi Case Study
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-          </Link>
-          <a href="#contact" className="px-3 py-4 text-sm font-medium text-muted transition hover:text-fg">
-            Contact Me
-          </a>
         </motion.div>
         <motion.p {...fadeUp(0.4)} className="mt-8 flex items-center gap-2 text-sm text-muted">
           <MapPin className="size-4 text-cyan" aria-hidden />
@@ -118,14 +143,14 @@ export function Overview() {
 
         <Reveal className="lg:col-span-2">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Results at MechServi</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">MechServi traction</p>
             <Link href="/mechservi/" className="group inline-flex items-center gap-1.5 text-sm font-medium text-cyan hover:text-fg">
-              See how these were measured
+              Sources & methodology
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </Link>
           </div>
           <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4">
-            {[mechservi[0], mechservi[1], mechservi[2], mechservi[5]].map((m) => (
+            {traction.map((m) => (
               <div key={m.label} className="bg-ink-2 p-6 md:p-7">
                 <dt className="sr-only">{m.label}</dt>
                 <dd>

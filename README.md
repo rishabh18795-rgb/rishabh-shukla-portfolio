@@ -23,7 +23,7 @@ The site presents MechServi (where Rishabh leads startup operations and growth),
 
 Home (hero, overview, verified results) · Technical Skills · Experience (expandable timeline, education) · Projects · Contact (form + direct channels) · Resume download
 
-**MechServi case study** (`/mechservi/`): flagship founder case study with customer and retention analytics, performance marketing results, WhatsApp and CRM workflow, revenue model, operations and technology, each item labelled by real status. Data rules: no prices, no customer personal data, workbook versions de-duplicated rather than summed. Figures and their derivation live in `src/lib/mechservi.ts`.
+**MechServi case study** (`/mechservi/`): investor-style founder case study of a connected vehicle-care marketplace: traction (founder-reported figures kept separate from the verified Nov 2025 – Apr 2026 sample), three-sided ecosystem, real customer, partner and admin app screenshots (developed, in deployment), price-free business model, acquisition, retention, operations, technology, growth opportunities, founder ownership and social links. No charts. Data rules: no prices, no customer personal data, figures never summed across sources. Figures and their derivation live in `src/lib/mechservi.ts`.
 
 SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` schema, `sitemap.xml`, `robots.txt`, SVG favicon.
 
@@ -40,7 +40,7 @@ src/
 scripts/og.html   source for public/og.png (render at 1200x630)
 public/
   projects/       screenshots of the live project sites
-  mechservi/      website hero and price-free campaign creatives
+  mechservi/      website hero; app/ holds price-blurred customer, partner and admin screenshots
   Rishabh_Shukla_Resume_2026.pdf
   og.png
 .github/workflows/deploy.yml

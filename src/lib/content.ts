@@ -35,7 +35,7 @@ export const coreExperience: Experience[] = [
       "Coordinated field teams, service delivery and customer issue resolution.",
     ],
     contribution:
-      "402 unique customers, 389 completed one-time services and 91 subscription customers in operating records (Nov 2025 – Apr 2026); 28% of one-time customers booked again.",
+      "Built a connected vehicle-care marketplace serving 1,000+ customers, with 400+ monthly subscription plans sold or managed and 38% retention (founder-reported); customer and partner apps developed and in deployment.",
     link: { label: "Read the MechServi case study", href: "/mechservi/" },
   },
   {
@@ -66,7 +66,7 @@ export const engagements: Experience[] = [
     description: "Brand and creator collaboration marketplace.",
     highlights: [
       "Product architecture: brand and creator registration, authentication and separate dashboards.",
-      "Payment and wallet requirements, commission model (10–15% proposed) and withdrawal workflow (₹1,000 minimum).",
+      "Payment and wallet requirements, commission model and withdrawal workflow.",
       "Coordinated frontend and backend delivery across GitHub, Vercel and Railway; API debugging and integration.",
     ],
     contribution: "Defined the marketplace's monetisation and payout model and brought the platform to a working production deployment.",
@@ -177,12 +177,12 @@ export const projects: Project[] = [
     slug: "mechservi",
     name: "MechServi",
     kicker: "Automotive services · 2023 → present",
-    tagline: "A doorstep vehicle-care business in Lucknow: 402 unique customers, 389 completed services and a 28% repeat rate.",
+    tagline: "A connected vehicle-care marketplace in Lucknow, linking vehicle owners, garages and service partners through customer and partner apps.",
     status: { label: "Live business", tone: "live" },
     results: [
-      { value: "402", label: "Unique customers" },
-      { value: "389", label: "Completed services" },
-      { value: "28%", label: "Repeat rate" },
+      { value: "1,000+", label: "Customers served" },
+      { value: "400+", label: "Subscription plans" },
+      { value: "38%", label: "Retention" },
       { value: "4,799", label: "Ad chat enquiries" },
     ],
     caseStudy: "/mechservi/",
@@ -218,7 +218,7 @@ export const projects: Project[] = [
     problem:
       "Brands and creators negotiate collaborations in DMs and spreadsheets, with no bidding, no escrow and no payout trail.",
     work: [
-      "Defined the commission model (10–15% proposed), wallet, ₹1,000 minimum withdrawal and payout workflow",
+      "Defined the commission model, partner wallet, withdrawal rules and payout workflow",
       "Made payment release, refund and withdrawal operations atomic, closing race conditions that could push a wallet negative",
       "Single-use password-reset tokens with transactional email (Resend)",
       "A separate office-admin portal with audit logging, verification and suspend flows",

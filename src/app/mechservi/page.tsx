@@ -1,65 +1,68 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Download, Mail } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, Globe, Mail } from "lucide-react";
 import { Footer } from "@/components/Contact";
 import { LinkedInIcon } from "@/components/icons";
 import {
+  BrowserShot,
   CardGrid,
   CaseSection,
+  Ecosystem,
   FlowChain,
-  FunnelEvidence,
-  MonthlyChart,
-  ShareBars,
-  StatGrid,
-  StatusSteps,
+  MetricGrid,
+  PhoneRow,
   StatusTag,
+  StepList,
 } from "@/components/mechservi";
 import { Motion, Reveal } from "@/components/ui";
 import {
-  creatives,
-  funnel,
-  headline,
-  influencer,
-  learnings,
-  marketing,
+  acquisition,
+  admin,
+  company,
+  customerApp,
+  ecosystem,
+  growth,
   method,
-  monthly,
   operations,
   ownership,
-  records,
+  ownershipLabel,
+  ownershipNote,
+  partnerApp,
+  problems,
   retention,
-  revenueLevers,
   revenueLoop,
-  serviceMix,
+  revenueStreams,
+  sample,
+  scalability,
+  social,
+  solutions,
   tech,
-  whatsappFlow,
+  traction,
+  tractionTags,
 } from "@/lib/mechservi";
 import { asset, site } from "@/lib/site";
 
+const title = "MechServi: a connected vehicle-care marketplace — Rishabh Shukla";
+const description =
+  "Founder case study: how Rishabh Shukla built MechServi, a vehicle-care marketplace connecting vehicle owners, garages and service partners in Lucknow, with customer and partner apps, local growth and operations.";
+
 export const metadata: Metadata = {
-  title: "MechServi case study — Rishabh Shukla",
-  description:
-    "How Rishabh Shukla built and operated MechServi, a doorstep vehicle-care business in Lucknow: 402 unique customers, 389 completed services, a 28% repeat rate and 4,799 ad-driven chat enquiries.",
+  title,
+  description,
   alternates: { canonical: "mechservi/" },
-  openGraph: {
-    type: "article",
-    url: "mechservi/",
-    title: "MechServi case study — Rishabh Shukla",
-    description: "402 unique customers, 389 completed services and a 28% repeat rate, from founder-led operations, growth and technology.",
-    images: [{ url: "og.png", width: 1200, height: 630 }],
-  },
+  openGraph: { type: "article", url: "mechservi/", title, description, images: [{ url: "og.png", width: 1200, height: 630 }] },
 };
 
 const jump = [
-  ["results", "Results"],
-  ["customers", "Customers"],
-  ["growth", "Growth"],
-  ["whatsapp", "WhatsApp"],
-  ["operations", "Operations"],
-  ["revenue", "Revenue model"],
+  ["traction", "Traction"],
+  ["ecosystem", "Marketplace"],
+  ["customer-app", "Customer app"],
+  ["partner-app", "Partner app"],
+  ["business-model", "Business model"],
+  ["acquisition", "Growth"],
   ["technology", "Technology"],
-  ["learnings", "Learnings"],
+  ["founder", "Founder"],
 ] as const;
 
 function CaseHeader() {
@@ -96,40 +99,61 @@ function CaseHeader() {
   );
 }
 
+function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9Z" />
+    </svg>
+  );
+}
+
+const socialIcon = { Instagram: InstagramIcon, Facebook: FacebookIcon, Website: Globe } as const;
+
 export default function MechServiCaseStudy() {
   return (
     <Motion>
       <CaseHeader />
       <main id="main">
-        {/* Intro + results */}
-        <section id="results" className="noise relative overflow-hidden pb-20 pt-16 md:pt-24">
+        {/* Intro */}
+        <section id="intro" className="noise relative overflow-hidden pb-16 pt-16 md:pb-20 md:pt-24">
           <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden />
           <div className="glow-cyan pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-5 md:px-8">
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-cyan">
                 <span className="h-px w-10 bg-cyan/60" aria-hidden />
-                Flagship case study · Founder &amp; CEO · 2023 — Present
+                Founder case study · Founder &amp; CEO · 2023 — Present
               </p>
               <h1 className="text-gradient mt-6 max-w-5xl text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-6xl md:text-7xl">
-                MechServi: a doorstep vehicle-care business,{" "}
-                <span className="font-serif font-normal italic text-cyan [-webkit-text-fill-color:currentColor]">built and run end to end.</span>
+                MechServi: a connected vehicle-care marketplace,{" "}
+                <span className="font-serif font-normal italic text-cyan [-webkit-text-fill-color:currentColor]">built from the ground up.</span>
               </h1>
-              <p className="mt-7 max-w-3xl text-lg leading-relaxed text-muted md:text-xl">
-                MechServi Technology Pvt. Ltd. brings car and bike care to customers&apos; doorsteps in Lucknow. I designed the
-                business model, ran local acquisition, built the WhatsApp-led sales process and CRM, managed field operations
-                and led the website, app and platform builds.
+              <p className="mt-6 max-w-3xl text-xl leading-relaxed text-fg/90 md:text-2xl">
+                Connecting vehicle owners, garages and service partners through one trusted auto-care ecosystem.
               </p>
             </Reveal>
-
-            <div className="mt-12">
-              <StatGrid items={headline} />
-            </div>
-            <Reveal className="mt-4 text-xs text-dim">
-              Operating records {records.period}. Ad enquiries from Meta Ads Manager. Methodology at the end of this page.
+            <Reveal className="mt-8 grid max-w-5xl gap-5 text-lg leading-relaxed text-muted md:grid-cols-2">
+              <p>
+                MechServi Technology Pvt. Ltd. is a technology-enabled vehicle-care marketplace that connects customers with
+                trusted garages, workshops, mechanics, service professionals and automotive businesses.
+              </p>
+              <p>
+                As Founder &amp; CEO, I took it from concept to execution: the business model, the digital presence, local
+                performance marketing, WhatsApp-led customer journeys, field operations, and the customer and partner
+                applications.
+              </p>
             </Reveal>
-
-            <nav aria-label="Case study sections" className="mt-12 flex flex-wrap gap-2">
+            <nav aria-label="Case study sections" className="mt-10 flex flex-wrap gap-2">
               {jump.map(([id, label]) => (
                 <a key={id} href={`#${id}`} className="rounded-full border border-line px-3.5 py-1.5 text-sm text-muted transition hover:border-cyan hover:text-cyan">
                   {label}
@@ -139,15 +163,46 @@ export default function MechServiCaseStudy() {
           </div>
         </section>
 
-        {/* Context + role */}
-        <CaseSection
-          id="context"
-          index="01"
-          label="Context & my role"
-          title={<>Turning a half-day workshop visit into a <span className="font-serif font-normal italic text-cyan">doorstep service</span>.</>}
-          intro="Vehicle owners in Lucknow lose hours to workshop visits, while skilled local mechanics lack steady demand. MechServi connects the two with doorstep washes, subscriptions and service partners."
-        >
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        {/* Traction */}
+        <section id="traction" className="border-t border-line py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <Reveal>
+              <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Early traction &amp; validation</p>
+            </Reveal>
+            <MetricGrid items={traction} />
+            <Reveal className="mt-4 flex flex-wrap gap-2">
+              {tractionTags.map((t) => (
+                <span key={t} className="rounded-full border border-line bg-white/[0.02] px-3 py-1 text-sm text-fg/80">{t}</span>
+              ))}
+            </Reveal>
+            <Reveal className="mt-10 rounded-3xl border border-line bg-white/[0.015] p-6 md:p-8">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h2 className="text-lg font-medium tracking-tight">Verified operating sample · {sample.period}</h2>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-muted">Subset of the business history</span>
+              </div>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
+                A six-month spreadsheet record, analysed line by line. It covers only part of the business, so its numbers sit
+                below the headline figures above and are not added to them.
+              </p>
+              <dl className="mt-6 grid grid-cols-2 gap-6 lg:grid-cols-4">
+                {sample.stats.map((s) => (
+                  <div key={s.label}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd>
+                      <span className="block font-serif text-3xl italic leading-none md:text-4xl">{s.value}</span>
+                      <span className="mt-2 block text-sm font-medium">{s.label}</span>
+                      <span className="mt-1 block text-xs text-muted">{s.note}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 01 Company */}
+        <CaseSection id="company" index="01" label="Company introduction" title={<>A doorstep vehicle-care business, <span className="font-serif font-normal italic text-cyan">growing into a marketplace</span>.</>}>
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             <Reveal className="overflow-hidden rounded-2xl border border-line bg-panel">
               <div className="flex items-center gap-1.5 border-b border-line px-4 py-3">
                 <span className="size-2.5 rounded-full bg-white/10" />
@@ -155,161 +210,160 @@ export default function MechServiCaseStudy() {
                 <span className="size-2.5 rounded-full bg-white/10" />
                 <span className="ml-3 font-mono text-[11px] text-dim">mechservi.in</span>
               </div>
-              <Image src={asset("/mechservi/website-hero.jpg")} alt="MechServi website hero: trusted vehicle services, delivered on your terms" width={1184} height={740} className="h-auto w-full" />
+              <Image src={asset("/mechservi/website-hero.jpg")} alt="MechServi website: trusted vehicle services, delivered on your terms" width={1184} height={740} className="h-auto w-full" />
             </Reveal>
             <Reveal delay={0.05}>
-              <h3 className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">What I owned</h3>
-              <ul className="mt-5 space-y-3">
-                {ownership.map((o) => (
-                  <li key={o} className="flex gap-3 leading-relaxed text-fg/85">
-                    <span className="mt-2.5 size-1 shrink-0 rounded-full bg-cyan" aria-hidden />
-                    {o}
-                  </li>
+              <dl className="divide-y divide-line border-y border-line">
+                {company.facts.map(([k, v]) => (
+                  <div key={k} className="grid grid-cols-[8rem_1fr] gap-4 py-4">
+                    <dt className="font-mono text-[11px] uppercase tracking-widest text-dim">{k}</dt>
+                    <dd className="text-fg/90">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </CaseSection>
+
+        {/* 02-03 Problem & solution */}
+        <CaseSection id="problem" index="02" label="Market problem" title={<>Vehicle care is <span className="font-serif font-normal italic text-cyan">fragmented</span> on both sides.</>}>
+          <CardGrid items={problems} />
+        </CaseSection>
+        <CaseSection id="solution" index="03" label="Proposed solution" title={<>Bring the service to the customer, and <span className="font-serif font-normal italic text-cyan">demand to the partner</span>.</>}>
+          <CardGrid items={solutions} />
+        </CaseSection>
+
+        {/* 04 Ecosystem */}
+        <CaseSection
+          id="ecosystem"
+          index="04"
+          label="Connected marketplace ecosystem"
+          title={<>Three sides, <span className="font-serif font-normal italic text-cyan">one platform</span>.</>}
+          intro="MechServi aims to connect the fragmented automotive after-sales market: vehicle owners on one side, garages and service partners on the other, with brands and vendors joining through B2B."
+        >
+          <Ecosystem owners={ecosystem.owners} platform={ecosystem.platform} partners={ecosystem.partners} brands={ecosystem.brands} />
+        </CaseSection>
+
+        {/* 05 Customer app */}
+        <CaseSection
+          id="customer-app"
+          index="05"
+          label="Customer application"
+          title={<>One platform for <span className="font-serif font-normal italic text-cyan">every vehicle-care need</span>.</>}
+          aside={<StatusTag status={customerApp.status} />}
+        >
+          <PhoneRow screens={customerApp.screens} />
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+            <div>
+              <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Customer journey</h3>
+              <StepList steps={customerApp.journey} />
+            </div>
+            <Reveal>
+              <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Also in the app</h3>
+              <ul className="flex flex-wrap gap-2">
+                {customerApp.extras.map((e) => (
+                  <li key={e} className="rounded-full border border-line bg-white/[0.02] px-3 py-1.5 text-sm text-fg/85">{e}</li>
                 ))}
               </ul>
             </Reveal>
           </div>
         </CaseSection>
 
-        {/* Customers & retention */}
+        {/* 06 Partner app */}
         <CaseSection
-          id="customers"
-          index="02"
-          label="Customer & retention analytics"
-          title={<>Customers came back: <span className="font-serif font-normal italic text-cyan">28% rebooked</span>, most within a month.</>}
-          intro={`From ${records.total} customer and service records (${records.oneTime} one-time, ${records.subscription} subscription), de-duplicated to ${records.uniqueCustomers} unique customers. ${records.overlap} customers appear in both trackers.`}
+          id="partner-app"
+          index="06"
+          label="Partner application"
+          title={<>Helping local garages and service professionals <span className="font-serif font-normal italic text-cyan">grow digitally</span>.</>}
+          aside={<StatusTag status={partnerApp.status} />}
         >
-          <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-            <MonthlyChart data={monthly} />
-            <ShareBars title="One-time service mix" items={serviceMix} />
-          </div>
-          <div className="mt-4">
-            <StatGrid items={retention} />
-          </div>
-          <Reveal className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl border border-line bg-white/[0.015] p-6 md:p-8">
-              <h3 className="text-lg font-medium tracking-tight">Acquisition → activation → retention → value</h3>
-              <dl className="mt-5 space-y-3 text-sm leading-relaxed">
-                {[
-                  ["Acquisition", "A customer's first record: 171 new customers in November 2025 alone."],
-                  ["Activation", "A completed first service: 267 one-time customers have at least one completed wash."],
-                  ["Retention", "Coming back: 94 repeat one-time customers and 22 subscribers with repeat plan starts."],
-                  ["Lifetime value", "Retention × frequency × spend over time; framework below."],
-                ].map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[7rem_1fr] gap-3">
-                    <dt className="font-mono text-[11px] uppercase tracking-widest text-cyan">{k}</dt>
-                    <dd className="text-muted">{v}</dd>
-                  </div>
+          <PhoneRow screens={partnerApp.screens} />
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+            <div>
+              <h3 className="mb-2 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Partner journey</h3>
+              <StepList steps={partnerApp.journey} />
+            </div>
+            <Reveal>
+              <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Why partners join</h3>
+              <ul className="space-y-2.5">
+                {partnerApp.value.map((v) => (
+                  <li key={v} className="flex gap-3 text-fg/85">
+                    <span className="mt-2.5 size-1 shrink-0 rounded-full bg-cyan" aria-hidden />
+                    {v}
+                  </li>
                 ))}
-              </dl>
-            </div>
-            <div className="rounded-3xl border border-line bg-white/[0.015] p-6 md:p-8">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="text-lg font-medium tracking-tight">Customer lifetime value</h3>
-                <StatusTag status="framework" />
-              </div>
-              <p className="mt-5 rounded-xl border border-line bg-ink px-4 py-3 font-mono text-sm text-fg/85">
-                CLV = Avg revenue per customer × Purchase frequency × Customer lifespan
+              </ul>
+              <p className="mt-6 text-xs leading-relaxed text-dim">
+                Verification is an admin review of uploaded documents. Settlements are tracked in the app and paid out by the
+                team; payouts are not automated.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted">
-                Frequency is measurable (2.6 bookings per repeat customer, median 20 days apart). Revenue per customer and
-                lifespan aren&apos;t published here, so no CLV figure is claimed.
-              </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </CaseSection>
 
-        {/* Growth & performance marketing */}
-        <CaseSection
-          id="growth"
-          index="03"
-          label="Performance marketing & local growth"
-          title={<>Hyperlocal ads that started <span className="font-serif font-normal italic text-cyan">4,799 conversations</span>.</>}
-          intro={`Facebook and Instagram campaigns targeted Lucknow localities (${marketing.localities.join(", ")}), with Google Business Profile for local search. Creatives pushed one action: message on WhatsApp or call to book.`}
-        >
-          <Reveal>
-            <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Operating window · Nov 2025 – Apr 2026</h3>
+        {/* 07 Admin */}
+        <CaseSection id="admin" index="07" label="Admin & operations system" title={<>The control room behind <span className="font-serif font-normal italic text-cyan">every booking</span>.</>} aside={<StatusTag status={admin.status} />}>
+          <Reveal className="grid gap-6 md:grid-cols-2">
+            {admin.screens.map((s) => (
+              <BrowserShot key={s.src} {...s} />
+            ))}
           </Reveal>
-          <StatGrid items={marketing.window} cols={4} />
-          <Reveal>
-            <h3 className="mb-4 mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Ads account lifetime · Oct 2023 – Nov 2026</h3>
-          </Reveal>
-          <StatGrid items={marketing.lifetime} cols={4} />
-          <Reveal className="mt-4 text-xs text-dim">Source: {marketing.adsSource}.</Reveal>
-          <Reveal>
-            <h3 className="mb-4 mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">Organic + paid reach · October 2025</h3>
-          </Reveal>
-          <StatGrid items={marketing.october} cols={4} />
-          <Reveal>
-            <h3 className="mb-4 mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-muted">November 2025</h3>
-          </Reveal>
-          <StatGrid items={marketing.november} />
-          <Reveal className="mt-4 text-xs text-dim">Source: {marketing.source}.</Reveal>
-
-          <Reveal>
-            <h3 className="mb-2 mt-16 text-2xl font-medium tracking-tight">From campaign to repeat customer</h3>
-            <p className="mb-6 max-w-2xl text-sm leading-relaxed text-muted">
-              One window, November 2025 – April 2026: ad data from Meta Ads Manager, customers and services from the operating
-              records. Customers arrive through every channel, so ad-to-customer conversion is blended.
-            </p>
-          </Reveal>
-          <FunnelEvidence rows={funnel} />
-
-          <Reveal>
-            <h3 className="mb-6 mt-16 text-2xl font-medium tracking-tight">Creatives I directed</h3>
-          </Reveal>
-          <Reveal className="columns-2 gap-3 md:columns-3 [&>*]:mb-3">
-            {creatives.map((c) => (
-              <Image key={c.src} src={asset(c.src)} alt={c.alt} width={c.w} height={c.h} className="h-auto w-full break-inside-avoid rounded-2xl border border-line" sizes="(min-width: 768px) 33vw, 50vw" />
+          <Reveal className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-4">
+            {admin.features.map((f) => (
+              <p key={f} className="flex gap-3 border-t border-line pt-3 text-sm leading-relaxed text-fg/85">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-cyan" aria-hidden />
+                {f}
+              </p>
             ))}
           </Reveal>
         </CaseSection>
 
-        {/* WhatsApp & automation */}
+        {/* 08 Business model */}
         <CaseSection
-          id="whatsapp"
-          index="04"
-          label="WhatsApp & automation"
-          title={<>One channel from <span className="font-serif font-normal italic text-cyan">ad to booking</span> to follow-up.</>}
-          intro="WhatsApp connected marketing, sales and operations. The live process ran on WhatsApp Business with scripted SOPs and CRM trackers; the API and AI layers are labelled for what they are."
-        >
-          <StatusSteps steps={whatsappFlow} />
-        </CaseSection>
-
-        {/* Operations */}
-        <CaseSection
-          id="operations"
-          index="05"
-          label="CRM & business operations"
-          title={<>Online demand, <span className="font-serif font-normal italic text-cyan">offline delivery</span>: the systems in between.</>}
-          intro="Every booking became a field job. These systems kept quality consistent without me on every job."
-        >
-          <CardGrid items={operations} />
-        </CaseSection>
-
-        {/* Revenue model */}
-        <CaseSection
-          id="revenue"
-          index="06"
-          label="Revenue model"
-          title={<>Built for <span className="font-serif font-normal italic text-cyan">recurring</span>, not one-off, revenue.</>}
-          intro="The model turns a first wash into a long relationship. 18 customers upgraded from a one-time wash to a subscription."
+          id="business-model"
+          index="08"
+          label="Business model"
+          title={<>Built for <span className="font-serif font-normal italic text-cyan">recurring</span>, network-driven revenue.</>}
+          intro="How revenue grows as customers return and the partner network deepens. Each stream is labelled by its real status."
         >
           <FlowChain steps={revenueLoop} />
           <div className="mt-8">
-            <CardGrid items={revenueLevers} cols={5} />
+            <CardGrid items={revenueStreams} cols={4} />
           </div>
         </CaseSection>
 
-        {/* Technology */}
-        <CaseSection
-          id="technology"
-          index="07"
-          label="Website, app & platform"
-          title={<>From WhatsApp booking to a <span className="font-serif font-normal italic text-cyan">full platform</span>, in stages.</>}
-          intro="Reviewed from the source code. I owned requirements, content and launch decisions, and built with the tech team; each part is labelled by its real status."
-        >
-          <Reveal className="grid gap-3 md:grid-cols-2">
+        {/* 09 Acquisition */}
+        <CaseSection id="acquisition" index="09" label="Customer acquisition strategy" title={<>Hyperlocal ads, <span className="font-serif font-normal italic text-cyan">WhatsApp-first</span> conversion.</>}>
+          <CardGrid items={acquisition.channels} cols={4} />
+          <div className="mt-6">
+            <MetricGrid items={acquisition.ads} />
+          </div>
+          <Reveal className="mt-3 text-xs text-dim">Source: {acquisition.adsNote}</Reveal>
+        </CaseSection>
+
+        {/* 10-11 Retention */}
+        <CaseSection id="retention" index="10" label="Retention & subscription model" title={<>Turning a first wash into a <span className="font-serif font-normal italic text-cyan">long relationship</span>.</>}>
+          <div className="grid gap-10 lg:grid-cols-2">
+            <StepList steps={retention.steps} />
+            <Reveal className="space-y-4">
+              {retention.evidence.map((e) => (
+                <p key={e} className="flex gap-3 leading-relaxed text-fg/85">
+                  <span className="mt-2.5 size-1 shrink-0 rounded-full bg-cyan" aria-hidden />
+                  {e}
+                </p>
+              ))}
+            </Reveal>
+          </div>
+        </CaseSection>
+
+        {/* 12 Operations */}
+        <CaseSection id="operations" index="11" label="Operational execution" title={<>Online demand, <span className="font-serif font-normal italic text-cyan">offline delivery</span>.</>} intro="Every booking became a field job. These systems kept quality consistent without the founder on every job.">
+          <CardGrid items={operations} />
+        </CaseSection>
+
+        {/* 13 Technology */}
+        <CaseSection id="technology" index="12" label="Technology & scalability" title={<>A platform designed to <span className="font-serif font-normal italic text-cyan">scale beyond one city</span>.</>}>
+          <Reveal className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {tech.map((t) => (
               <div key={t.name} className="flex flex-col rounded-2xl border border-line bg-white/[0.015] p-6">
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -325,35 +379,80 @@ export default function MechServiCaseStudy() {
               </div>
             ))}
           </Reveal>
+          <Reveal className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+            {scalability.map((f) => (
+              <p key={f} className="flex gap-3 border-t border-line pt-3 text-sm leading-relaxed text-fg/85">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-cyan" aria-hidden />
+                {f}
+              </p>
+            ))}
+          </Reveal>
         </CaseSection>
 
-        {/* Social & influencer */}
-        <CaseSection
-          id="social"
-          index="08"
-          label="Social media & influencer marketing"
-          title={<>Content that sold the <span className="font-serif font-normal italic text-cyan">problem</span> before the service.</>}
-          intro="Education-led posts and reels (why cars get dirty, open parking, dead batteries), hyperlocal creative and local influencer collaborations. Influencer campaign metrics weren't recorded, so this shows the process I ran, not results."
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <StatusTag status="framework" />
-            <span className="text-sm text-muted">Influencer collaboration process</span>
-          </div>
-          <div className="mt-5">
-            <FlowChain steps={influencer} />
-          </div>
+        {/* 14 Growth */}
+        <CaseSection id="growth" index="13" label="Growth opportunities" title={<>Where the marketplace <span className="font-serif font-normal italic text-cyan">goes next</span>.</>} intro="Roadmap, not results: none of these are claimed as current operations." aside={<StatusTag status="future" />}>
+          <CardGrid items={growth} />
         </CaseSection>
 
-        {/* Learnings */}
-        <CaseSection id="learnings" index="09" label="Challenges & learnings" title={<>What I&apos;d keep, and what I&apos;d <span className="font-serif font-normal italic text-cyan">change</span>.</>}>
-          <CardGrid items={learnings} cols={2} />
+        {/* 15 Founder */}
+        <CaseSection id="founder" index="14" label="Founder background & ownership" title={<>What I <span className="font-serif font-normal italic text-cyan">personally</span> did.</>}>
+          <Reveal className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {ownership.map((o) => (
+              <div key={o.area} className="rounded-2xl border border-line bg-white/[0.015] p-6">
+                <h3 className="font-medium tracking-tight">{o.area}</h3>
+                <ul className="mt-3 space-y-1.5">
+                  {o.items.map((i) => (
+                    <li key={i} className="text-sm leading-relaxed text-muted">{i}</li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {o.how.map((h) => (
+                    <span key={h} className="rounded-full bg-cyan-soft px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-cyan">{ownershipLabel[h]}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </Reveal>
+          <Reveal className="mt-6 max-w-4xl text-sm leading-relaxed text-muted">{ownershipNote}</Reveal>
         </CaseSection>
+
+        {/* Social */}
+        <section id="social" className="border-t border-line py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <Reveal className="flex flex-col gap-8 rounded-3xl border border-line bg-panel p-6 md:flex-row md:items-center md:justify-between md:p-10">
+              <div className="max-w-xl">
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Brand building &amp; social presence</p>
+                <p className="mt-3 text-2xl font-medium leading-snug tracking-tight">
+                  Local brand built through Instagram reels, Facebook campaigns and community content.
+                </p>
+              </div>
+              <ul className="flex flex-wrap gap-3">
+                {social.map((s) => {
+                  const Icon = socialIcon[s.label as keyof typeof socialIcon];
+                  return (
+                    <li key={s.label}>
+                      <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 rounded-2xl border border-line-strong bg-ink px-4 py-3 transition hover:border-cyan">
+                        <Icon className="size-5 text-fg transition group-hover:text-cyan" />
+                        <span>
+                          <span className="block text-sm font-medium">{s.label}</span>
+                          <span className="block text-xs text-muted">{s.handle}</span>
+                        </span>
+                        <ArrowUpRight className="size-4 text-dim transition group-hover:text-cyan" aria-hidden />
+                        <span className="sr-only">(opens in a new tab)</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
 
         {/* Method */}
-        <section className="border-t border-line py-20">
+        <section className="border-t border-line py-16">
           <div className="mx-auto max-w-4xl px-5 md:px-8">
             <Reveal>
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Methodology & data notes</h2>
+              <h2 className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Sources & methodology</h2>
               <ul className="mt-6 space-y-3">
                 {method.map((m) => (
                   <li key={m} className="flex gap-3 text-sm leading-relaxed text-muted">
@@ -370,10 +469,6 @@ export default function MechServiCaseStudy() {
               <Link href="/#contact" className="inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-ink transition hover:bg-white">
                 <Mail className="size-4" aria-hidden /> Contact me
               </Link>
-              <a href={site.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-2 py-3 text-sm text-muted hover:text-cyan">
-                mechservi.in <ArrowUpRight className="size-3.5" aria-hidden />
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
             </Reveal>
           </div>
         </section>
