@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Blocks, Cog, LineChart, Rocket, type LucideIcon } from "lucide-react";
+import { ArrowDown, ArrowRight, Blocks, Cog, LineChart, MapPin, Rocket, type LucideIcon } from "lucide-react";
+import { headline as mechservi } from "@/lib/mechservi";
 import { site } from "@/lib/site";
 import { Reveal } from "./ui";
 
@@ -34,7 +36,7 @@ export function Hero() {
 
         <motion.p
           {...fadeUp(0.16)}
-          className="mt-8 flex flex-col gap-1 text-2xl font-medium tracking-tight text-fg sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 md:text-3xl"
+          className="mt-8 flex flex-col gap-1 text-xl font-medium tracking-tight text-fg sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 md:text-2xl"
         >
           {site.headline.map((h, i) => (
             <span key={h} className="flex items-center gap-4">
@@ -45,8 +47,9 @@ export function Hero() {
         </motion.p>
 
         <motion.p {...fadeUp(0.24)} className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-          I work at the intersection of business strategy, operations, technology and growth. I build business processes,
-          execute go-to-market strategies, manage cross-functional projects and turn ideas into structured execution.
+          I don&apos;t just plan strategy. As founder of MechServi I built the business systems, ran the growth campaigns,
+          shipped the digital platforms and managed real-world operations, serving{" "}
+          <span className="text-fg">402 customers with a 28% repeat rate</span>.
         </motion.p>
 
         <motion.div {...fadeUp(0.32)} className="mt-12 flex flex-wrap items-center gap-3">
@@ -57,14 +60,21 @@ export function Hero() {
             View My Work
             <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
           </a>
-          <a
-            href="#contact"
+          <Link
+            href="/mechservi/"
             className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-4 text-sm font-medium text-fg transition hover:border-fg"
           >
-            Contact Me
+            MechServi Case Study
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </Link>
+          <a href="#contact" className="px-3 py-4 text-sm font-medium text-muted transition hover:text-fg">
+            Contact Me
           </a>
         </motion.div>
+        <motion.p {...fadeUp(0.4)} className="mt-8 flex items-center gap-2 text-sm text-muted">
+          <MapPin className="size-4 text-cyan" aria-hidden />
+          {site.availability}
+        </motion.p>
       </div>
     </section>
   );
@@ -104,6 +114,28 @@ export function Overview() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal className="lg:col-span-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Results at MechServi</p>
+            <Link href="/mechservi/" className="group inline-flex items-center gap-1.5 text-sm font-medium text-cyan hover:text-fg">
+              See how these were measured
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          </div>
+          <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4">
+            {[mechservi[0], mechservi[1], mechservi[2], mechservi[5]].map((m) => (
+              <div key={m.label} className="bg-ink-2 p-6 md:p-7">
+                <dt className="sr-only">{m.label}</dt>
+                <dd>
+                  <span className="block font-serif text-4xl italic leading-none md:text-5xl">{m.value}</span>
+                  <span className="mt-3 block font-medium tracking-tight">{m.label}</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-muted">{m.note}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>

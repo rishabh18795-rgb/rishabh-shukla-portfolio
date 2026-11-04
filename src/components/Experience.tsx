@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, GraduationCap } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, ChevronDown, GraduationCap } from "lucide-react";
 import { coreExperience, engagements, engagementsPeriod, type Experience as Exp } from "@/lib/content";
 import { Reveal, SectionHeading } from "./ui";
 
@@ -66,7 +67,16 @@ function ExperienceItem({ e, open, onToggle, highlight }: { e: Exp; open: boolea
                   <p className="mt-1.5 text-sm leading-relaxed text-fg">{e.contribution}</p>
                 </div>
               )}
-              {e.link && (
+              {e.link?.href.startsWith("/") && (
+                <Link
+                  href={e.link.href}
+                  className="group mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cyan transition hover:text-fg"
+                >
+                  {e.link.label}
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                </Link>
+              )}
+              {e.link && !e.link.href.startsWith("/") && (
                 <a
                   href={e.link.href}
                   target="_blank"

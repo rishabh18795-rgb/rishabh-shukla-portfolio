@@ -21,7 +21,9 @@ The site presents MechServi (where Rishabh leads startup operations and growth),
 
 ## Sections
 
-Home (hero + professional overview) · Technical Skills · Experience (expandable timeline, education) · Projects · Contact (form + direct channels) · Resume download
+Home (hero, overview, verified results) · Technical Skills · Experience (expandable timeline, education) · Projects · Contact (form + direct channels) · Resume download
+
+**MechServi case study** (`/mechservi/`): flagship founder case study with customer and retention analytics, performance marketing results, WhatsApp and CRM workflow, revenue model, operations and technology, each item labelled by real status. Data rules: no prices, no customer personal data, workbook versions de-duplicated rather than summed. Figures and their derivation live in `src/lib/mechservi.ts`.
 
 SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` schema, `sitemap.xml`, `robots.txt`, SVG favicon.
 
@@ -29,14 +31,16 @@ SEO: metadata, Open Graph/Twitter image (`public/og.png`), JSON-LD `Person` sche
 
 ```
 src/
-  app/            layout (metadata, fonts), page, icon.svg, sitemap.ts, robots.ts, not-found
-  components/     Nav, Hero (incl. Overview), Skills, Experience, Projects, Contact, ContactForm, ui
+  app/            layout (metadata, fonts), page, mechservi/ (case study), icon.svg, sitemap.ts, robots.ts, not-found
+  components/     Nav, Hero (incl. Overview), Skills, Experience, Projects, Contact, ContactForm, mechservi (case-study blocks), ui
   lib/
     site.ts       profile, links, contact details, base-path helper
     content.ts    experience, projects, skill groups: all site copy lives here
+    mechservi.ts  case-study figures, sources and methodology
 scripts/og.html   source for public/og.png (render at 1200x630)
 public/
   projects/       screenshots of the live project sites
+  mechservi/      website hero and price-free campaign creatives
   Rishabh_Shukla_Resume_2026.pdf
   og.png
 .github/workflows/deploy.yml

@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { ArrowUpRight, Lock } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Lock } from "lucide-react";
 import { moreRepos, projects, type Project } from "@/lib/content";
 import { asset } from "@/lib/site";
 import { GitHubIcon } from "./icons";
@@ -54,6 +55,20 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
         <h3 className="mt-2 text-4xl font-medium tracking-tight md:text-5xl">{p.name}</h3>
         <p className="mt-4 text-lg leading-relaxed text-fg/85">{p.tagline}</p>
 
+        {p.results && (
+          <dl className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+            {p.results.map((r) => (
+              <div key={r.label} className="bg-ink-2 px-4 py-4">
+                <dt className="sr-only">{r.label}</dt>
+                <dd>
+                  <span className="block font-serif text-3xl italic leading-none text-fg">{r.value}</span>
+                  <span className="mt-1.5 block text-xs text-muted">{r.label}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
+
         <dl className="mt-8 grid gap-6 sm:grid-cols-[120px_1fr]">
           <dt className="font-mono text-[11px] uppercase tracking-widest text-dim">My role</dt>
           <dd className="text-fg">{p.role}</dd>
@@ -98,6 +113,15 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
         </dl>
 
         <div className="mt-9 flex flex-wrap items-center gap-2">
+          {p.caseStudy && (
+            <Link
+              href={p.caseStudy}
+              className="group inline-flex items-center gap-2 rounded-full bg-cyan px-5 py-2 text-sm font-semibold text-ink transition hover:bg-white"
+            >
+              Read the case study
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          )}
           {p.links.map((l) => (
             <a
               key={l.href}

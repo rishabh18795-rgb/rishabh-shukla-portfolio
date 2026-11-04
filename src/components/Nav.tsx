@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { asset, navItems, site } from "@/lib/site";
+import Link from "next/link";
+import { asset, navItems, pageLinks, site } from "@/lib/site";
 import { LinkedInIcon } from "./icons";
 
 export function Nav() {
@@ -75,6 +76,13 @@ export function Nav() {
               </a>
             </li>
           ))}
+          {pageLinks.map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="block rounded-full px-4 py-1.5 text-sm text-cyan transition-colors hover:text-fg">
+                Case Study
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className="flex items-center gap-2">
@@ -136,6 +144,18 @@ export function Nav() {
                     {n.label}
                   </a>
                 </motion.li>
+              ))}
+              {pageLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-baseline gap-4 border-b border-line py-4 text-3xl tracking-tight text-cyan"
+                  >
+                    <span className="font-mono text-xs">→</span>
+                    {l.label}
+                  </Link>
+                </li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-3 px-5 pt-8">

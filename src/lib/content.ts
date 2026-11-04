@@ -2,7 +2,7 @@
 // repositories. Nothing here is an estimate: no invented clients, traffic,
 // revenue or user numbers. Update this file when the facts change.
 
-export type EngagementKind = "Operating role" | "Freelance practice" | "Project engagement" | "Consulting engagement" | "Training";
+export type EngagementKind = "Founder" | "Operating role" | "Freelance practice" | "Project engagement" | "Consulting engagement" | "Training";
 
 export type Experience = {
   id: string;
@@ -22,7 +22,7 @@ export const coreExperience: Experience[] = [
     id: "mechservi",
     name: "MechServi Technology Pvt. Ltd.",
     role: "Founder & CEO",
-    kind: "Operating role",
+    kind: "Founder",
     period: "2023 — Present",
     description: "Doorstep automotive services business, Lucknow.",
     highlights: [
@@ -34,7 +34,9 @@ export const coreExperience: Experience[] = [
       "Implemented CRM and WhatsApp Business workflows.",
       "Coordinated field teams, service delivery and customer issue resolution.",
     ],
-    link: { label: "mechservi.in", href: "https://mechservi.in" },
+    contribution:
+      "402 unique customers, 389 completed one-time services and 91 subscription customers in operating records (Nov 2025 – Apr 2026); 28% of one-time customers booked again.",
+    link: { label: "Read the MechServi case study", href: "/mechservi/" },
   },
   {
     id: "freelance",
@@ -81,7 +83,7 @@ export const engagements: Experience[] = [
       "WhatsApp Business setup and catalogue; lead qualification, booking workflow and follow-up SOPs.",
       "AI-assisted video ad concepts, scripts, Hindi voiceovers and creative direction.",
     ],
-    contribution: "Designed the launch GTM: from ad to WhatsApp conversation to booking, with a 10-minute warm-lead response process.",
+    contribution: "Designed the launch GTM from ad to WhatsApp conversation to booking. Three Meta campaigns started 135 WhatsApp conversations in 15 days (4–18 Oct 2026).",
     link: { label: "setorahome.com", href: "https://www.setorahome.com" },
   },
   {
@@ -164,6 +166,10 @@ export type Project = {
   imageAlt: string;
   links: { label: string; href: string }[];
   note?: string;
+  /** Verified headline results shown on the card. */
+  results?: { value: string; label: string }[];
+  /** Internal route to a full case study. */
+  caseStudy?: string;
 };
 
 export const projects: Project[] = [
@@ -171,8 +177,15 @@ export const projects: Project[] = [
     slug: "mechservi",
     name: "MechServi",
     kicker: "Automotive services · 2023 → present",
-    tagline: "A doorstep bike and car service business, taken from idea to live operations in Lucknow.",
+    tagline: "A doorstep vehicle-care business in Lucknow: 402 unique customers, 389 completed services and a 28% repeat rate.",
     status: { label: "Live business", tone: "live" },
+    results: [
+      { value: "402", label: "Unique customers" },
+      { value: "389", label: "Completed services" },
+      { value: "28%", label: "Repeat rate" },
+      { value: "870K+", label: "Meta views / month" },
+    ],
+    caseStudy: "/mechservi/",
     role: "Founder & CEO",
     problem:
       "Vehicle owners lose half a day to a workshop visit, while skilled independent mechanics have no steady demand or booking system. MechServi brings the service to the driveway.",
@@ -237,6 +250,12 @@ export const projects: Project[] = [
     kicker: "Home services · Varanasi launch",
     tagline: "A multi-service home-care brand: shifting, cleaning, repairs, car washing and senior care.",
     status: { label: "Live brand · redesign ready", tone: "live" },
+    results: [
+      { value: "135", label: "WhatsApp conversations" },
+      { value: "13.5K", label: "Ad impressions" },
+      { value: "91", label: "Partner-hiring chats" },
+      { value: "15 days", label: "Campaign window" },
+    ],
     role: "Digital Growth & Marketing Consultant",
     problem:
       "Households in Varanasi have no single, trusted channel to book everyday home help, from shifting and repairs to hospital assistance for parents.",

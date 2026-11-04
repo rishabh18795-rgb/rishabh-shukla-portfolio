@@ -10,9 +10,9 @@ export const site = {
   description:
     "Rishabh Shukla is a strategy and operations professional from Lucknow, India, with 3+ years of startup execution across business growth, product and marketplace operations, GTM strategy and technology implementation.",
   designation: "Strategy & Operations Lead",
-  headline: ["Business Strategy", "Growth", "Product Operations"],
+  headline: ["Business Strategy & Operations", "Growth & Performance Marketing", "Product & Technology Execution"],
   location: "Lucknow, Uttar Pradesh, India",
-  availability: "Open to Delhi NCR (Gurgaon / Noida) and Remote",
+  availability: "Open to immediate relocation · Delhi NCR, Bengaluru or remote",
   email: "rishabh18795@gmail.com",
   phone: "+91 95591 33317",
   phoneHref: "tel:+919559133317",
@@ -32,3 +32,6 @@ export const navItems = [
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ] as const;
+
+/** Standalone pages linked from the main navigation. */
+export const pageLinks = [{ href: "/mechservi/", label: "MechServi case study" }] as const;
