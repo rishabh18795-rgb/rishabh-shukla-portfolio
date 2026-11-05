@@ -4,10 +4,8 @@
 // - No prices, package prices, revenue or other currency figures anywhere.
 // - No customer names, phone numbers, addresses or vehicle numbers. App
 //   screenshots use seeded demo accounts, with every amount blurred.
-// - Two kinds of numbers, never mixed or added together:
-//   1. Founder-reported figures for the whole business history (2023 – present).
-//   2. Verified figures from a limited operating sample (Nov 2025 – Apr 2026)
-//      and from Meta Ads Manager exports. Each is labelled with its source.
+// - Only figures that can be evidenced: the operating sample (Nov 2025 – Apr 2026)
+//   and Meta Ads Manager exports. Each is labelled with its source.
 // - App features are listed only when they exist in the source code.
 
 export type Status = "live" | "developed" | "built" | "planned" | "future";
@@ -20,11 +18,11 @@ export const statusLabel: Record<Status, string> = {
   future: "Future opportunity",
 };
 
-/** Founder-reported traction across the business history. */
+/** Evidenced traction. */
 export const traction = [
-  { value: "1,000+", label: "Customers served", note: "Founder-reported, full business history" },
-  { value: "400+", label: "Monthly subscription plans sold / managed", note: "Plans sold or managed over time, not active subscribers today" },
-  { value: "38%", label: "Customer retention", note: "Founder-reported: customers who came back after their first service" },
+  { value: "402", label: "Unique customers", note: "Verified: tracker sample, Nov 2025 – Apr 2026" },
+  { value: "91", label: "Subscription customers", note: "Verified: plan tracker snapshot in the same sample" },
+  { value: "28%", label: "Repeat one-time bookings", note: "Verified: 94 of 336 one-time customers booked again" },
   { value: "4,799", label: "Meta ads chat enquiries", note: "Verified: Meta Ads Manager, all campaigns to Nov 2026" },
 ];
 
@@ -48,8 +46,8 @@ export const sample = {
 
 export const company = {
   facts: [
-    ["Company", "MechServi Technology Pvt. Ltd."],
-    ["Founded", "2023 · Lucknow, Uttar Pradesh"],
+    ["Company", "MechServi Technology (OPC) Private Limited"],
+    ["Incorporated", "May 2024 · Lucknow, Uttar Pradesh"],
     ["Model", "B2C doorstep services + B2B partner marketplace"],
     ["Registration", "MSME-registered"],
     ["Role", "Founder & CEO"],
@@ -181,7 +179,7 @@ export const retention = {
   evidence: [
     "In the operating sample, 94 of 336 one-time customers (28%) booked again, with a median 20 days to the next booking.",
     "18 customers moved from a one-time wash to a subscription, and 22 subscribers started plans in two or more months.",
-    "Across the sample, 33% of customers have two or more service records. The 38% headline is founder-reported over the full history.",
+    "Across the sample, 33% of customers have two or more service records.",
   ],
 };
 
@@ -248,9 +246,8 @@ export const social = [
 ];
 
 export const method = [
-  "Headline traction (1,000+ customers served, 400+ subscription plans sold or managed, 38% retention) is founder-reported for the full business history since 2023. Subscription plans are plans sold or managed over time, not current subscribers.",
-  "The operating sample is the spreadsheet record for November 2025 – April 2026: the largest snapshot of each tracker (490 one-time and 162 subscription records), de-duplicated by phone number. It is a subset of the business history, so its figures are lower than the headline and are never added to it.",
-  "Retention in the sample: 28% of one-time customers booked again, and 33% of all sample customers have two or more records. The 38% headline uses the full history.",
+  "The operating sample is the spreadsheet record for November 2025 – April 2026: the largest snapshot of each tracker (490 one-time and 162 subscription records), de-duplicated by phone number. It is a subset of the business history.",
+  "Retention in the sample: 28% of one-time customers booked again, and 33% of all sample customers have two or more records.",
   "Ad figures come from Meta Ads Manager exports for the MechServi ad account. No spend, revenue, ROAS, GMV or market-size figures are published.",
   "App screenshots come from the MechServi customer, partner and admin applications running with demo accounts and demo data. Amounts are blurred; no real customer data appears.",
 ];
