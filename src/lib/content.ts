@@ -2,7 +2,7 @@
 // repositories. Nothing here is an estimate: no invented clients, traffic,
 // revenue or user numbers. Update this file when the facts change.
 
-export type EngagementKind = "Founder" | "Operating role" | "Freelance practice" | "Project engagement" | "Consulting engagement" | "Training";
+export type EngagementKind = "Founder" | "Part-time role" | "Operating role" | "Freelance practice" | "Project engagement" | "Consulting engagement" | "Training";
 
 export type Experience = {
   id: string;
@@ -20,10 +20,10 @@ export type Experience = {
 export const coreExperience: Experience[] = [
   {
     id: "mechservi",
-    name: "MechServi Technology Pvt. Ltd.",
+    name: "MechServi Technology (OPC) Private Limited",
     role: "Founder & CEO",
     kind: "Founder",
-    period: "2023 — Present",
+    period: "May 2024 — Present",
     description: "Founded and ran a doorstep vehicle-care business in Lucknow, now growing into a connected marketplace.",
     highlights: [
       "Owned the business end to end: model, service packages, pricing structure and partnerships.",
@@ -34,15 +34,26 @@ export const coreExperience: Experience[] = [
       "Led the customer app, partner app and admin platform from requirements to a developed product now in deployment.",
     ],
     contribution:
-      "Built a connected vehicle-care marketplace serving 1,000+ customers, with 400+ monthly subscription plans sold or managed and 38% retention (founder-reported); customer and partner apps developed and in deployment.",
+      "Built a connected vehicle-care marketplace: 402 unique customers and 28% repeat one-time bookings in the verified Nov 2025 – Apr 2026 tracker sample; customer and partner apps developed and in deployment.",
     link: { label: "Read the MechServi case study", href: "/mechservi/" },
+  },
+  {
+    id: "guerdon",
+    name: "Project Guerdon LLP (Guerdon Kicks)",
+    role: "Performance Marketing Specialist",
+    kind: "Part-time role",
+    period: "Jun 2026 — Sep 2026",
+    description: "Part-time role with an e-commerce brand.",
+    highlights: [
+      "Meta campaigns across awareness, retargeting and catalogue sales.",
+      "Diagnosed Pixel, purchase-event and catalogue tracking issues; delivered optimisation benchmarks.",
+    ],
   },
   {
     id: "freelance",
     name: "Independent",
     role: "Growth & Digital Marketing Consultant",
     kind: "Freelance practice",
-    period: "2022 — 2023",
     description: "Growth and e-commerce work for businesses across service, retail, e-commerce, real estate and education.",
     highlights: [
       "Managed Meta Ads and Google Ads campaigns for businesses.",
@@ -137,18 +148,6 @@ export const engagements: Experience[] = [
     link: { label: "instabeam.site", href: "https://instabeam.site" },
   },
   {
-    id: "guerdon",
-    name: "Guerdon Kicks",
-    role: "E-commerce Performance Marketing Consultant",
-    kind: "Consulting engagement",
-    description: "E-commerce brand.",
-    highlights: [
-      "Meta campaigns across awareness, retargeting and catalogue sales.",
-      "Diagnosed Pixel, purchase-event and catalogue tracking issues; delivered optimisation benchmarks.",
-    ],
-    contribution: "Catalogue sales campaign: ₹14,497 attributed revenue on ₹7,435 spend (1.94× ROAS, 2.25% CTR).",
-  },
-  {
     id: "hasiru",
     name: "Hasiru Nidhi",
     role: "Website & Digital Product Consultant",
@@ -213,7 +212,7 @@ export const projects: Project[] = [
   {
     slug: "mechservi",
     name: "MechServi",
-    kicker: "Automotive services · 2023 → present",
+    kicker: "Automotive services · Incorporated May 2024",
     tagline: "A connected vehicle-care marketplace in Lucknow, linking vehicle owners, garages and service partners through customer and partner apps.",
     status: { label: "Live business", tone: "live" },
     caseStudy: "/mechservi/",
