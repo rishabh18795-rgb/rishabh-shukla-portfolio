@@ -62,6 +62,7 @@ const personJsonLd = {
   jobTitle: site.designation,
   address: { "@type": "PostalAddress", addressLocality: "Lucknow", addressRegion: "Uttar Pradesh", addressCountry: "IN" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Glocal University" },
+  hasCredential: { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: "Bachelor of Technology (B.Tech), Mechanical Engineering" },
   email: `mailto:${site.email}`,
   sameAs: [site.linkedin, site.github],
 };

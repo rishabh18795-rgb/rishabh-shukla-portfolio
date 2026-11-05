@@ -53,6 +53,44 @@ export const coreExperience: Experience[] = [
   },
 ];
 
+/**
+ * Industrial and vocational training during the B.Tech (Mechanical), from the original certificates
+ * (GMR: 8–31 Jan 2016; Bajaj Motors: 15 Jun – 14 Jul 2016; MAK Industries: 5 Mar – 15 Apr 2017).
+ * Training, not employment. Dates are deliberately not shown on the site.
+ */
+export const industrialTraining: { org: string; unit: string; kind: string; points: string[] }[] = [
+  {
+    org: "GMR Infrastructure Limited",
+    unit: "EPC Division · Plant and Machinery Department",
+    kind: "Vocational training",
+    points: [
+      "Industrial exposure in the Plant and Machinery Department.",
+      "Understanding of industrial infrastructure and plant operations.",
+      "Exposure to machinery-related operational environments.",
+    ],
+  },
+  {
+    org: "Bajaj Motors Limited",
+    unit: "Pantnagar Plant, Uttarakhand",
+    kind: "Industrial training",
+    points: [
+      "Automotive manufacturing environment.",
+      "Industrial training and practical exposure to plant operations.",
+      "Understanding of manufacturing workflows and production environments.",
+    ],
+  },
+  {
+    org: "MAK Industries",
+    unit: "Hapur, Uttar Pradesh · ISO 9001 certified",
+    kind: "Industrial training",
+    points: [
+      "Industrial training in an ISO-certified manufacturing organisation.",
+      "Practical exposure to industrial working environments.",
+      "Professional discipline, sincerity and operational learning.",
+    ],
+  },
+];
+
 /** Engagements from Rishabh's independent consulting period, May – Nov 2026. */
 export const engagementsPeriod = "May 2026 — Nov 2026";
 

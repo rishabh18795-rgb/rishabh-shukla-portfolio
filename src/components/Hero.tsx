@@ -46,9 +46,10 @@ export function Hero() {
         </motion.h1>
 
         <motion.p {...fadeUp(0.18)} className="mt-8 max-w-3xl text-lg leading-relaxed text-fg/70 md:text-xl md:leading-relaxed">
-          An entrepreneur and business operator with hands-on experience building ventures, developing digital products,
-          driving customer acquisition, establishing operational systems and growing business partnerships. I combine
-          strategic thinking with execution to turn business opportunities into measurable outcomes.
+          An entrepreneur and business operator with an engineering foundation and hands-on experience across startup
+          building, business operations, growth strategy and digital product development. I combine an understanding of
+          operational environments with commercial thinking and technology-driven execution to build systems, develop
+          partnerships and create business impact.
         </motion.p>
 
         <motion.ul
@@ -128,8 +129,8 @@ export function Overview() {
             </span>
           </p>
           <p className="mt-6 max-w-lg leading-relaxed text-muted">
-            Experience across a founded startup, independent consulting and product engagements, working directly with
-            founders, partners, field teams and developers.
+            A mechanical engineering foundation with industrial training, then a founded startup, independent
+            consulting and product engagements, working directly with founders, partners, field teams and developers.
           </p>
         </Reveal>
 

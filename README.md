@@ -21,7 +21,7 @@ The site presents MechServi (where Rishabh leads startup operations and growth),
 
 ## Sections
 
-Home (hero, overview, verified results) · Technical Skills · Experience (expandable timeline, education) · Projects · Contact (form + direct channels) · Resume download
+Home (hero, capabilities, featured case study) · Technical Skills · Experience (capability-based, no dates: roles, consulting engagements, Engineering Foundations & Industrial Experience, education) · Projects · Contact (form + direct channels) · Resume download
 
 **MechServi case study** (`/mechservi/`): investor-style founder case study of a connected vehicle-care marketplace: traction (founder-reported figures kept separate from the verified Nov 2025 – Apr 2026 sample), three-sided ecosystem, real customer, partner and admin app screenshots (developed, in deployment), price-free business model, acquisition, retention, operations, technology, growth opportunities, founder ownership and social links. No charts. Data rules: no prices, no customer personal data, figures never summed across sources. Figures and their derivation live in `src/lib/mechservi.ts`.
 

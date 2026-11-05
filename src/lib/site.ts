@@ -8,7 +8,7 @@ export const site = {
   url: "https://rishabh18795-rgb.github.io/rishabh-shukla-portfolio",
   title: "Rishabh Shukla — Business Operator | Strategy, Operations & Growth",
   description:
-    "Rishabh Shukla is an entrepreneur and business operator from Lucknow, India: founder of MechServi, with hands-on experience in startup building, strategy and operations, growth and GTM, digital products and business development.",
+    "Rishabh Shukla is an entrepreneur and business operator from Lucknow, India, with a mechanical engineering foundation: founder of MechServi, with hands-on experience in startup building, strategy and operations, growth and GTM, digital products and business development.",
   designation: "Founder-Level Business Operator · Strategy, Operations & Growth",
   headline: ["Business Strategy & Operations", "Growth & Performance Marketing", "Product & Technology Execution"],
   location: "Lucknow, Uttar Pradesh, India",
