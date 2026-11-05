@@ -132,7 +132,7 @@ export default function MechServiCaseStudy() {
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-cyan">
                 <span className="h-px w-10 bg-cyan/60" aria-hidden />
-                Founder case study · Founder &amp; CEO · 2023 — Present
+                Founder case study · Founder &amp; CEO · Incorporated May 2024
               </p>
               <h1 className="text-gradient mt-6 max-w-5xl text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-6xl md:text-7xl">
                 MechServi: a connected vehicle-care marketplace,{" "}
@@ -144,7 +144,7 @@ export default function MechServiCaseStudy() {
             </Reveal>
             <Reveal className="mt-8 grid max-w-5xl gap-5 text-lg leading-relaxed text-muted md:grid-cols-2">
               <p>
-                MechServi Technology Pvt. Ltd. is a technology-enabled vehicle-care marketplace that connects customers with
+                MechServi Technology (OPC) Private Limited is a technology-enabled vehicle-care marketplace that connects customers with
                 trusted garages, workshops, mechanics, service professionals and automotive businesses.
               </p>
               <p>
@@ -181,8 +181,8 @@ export default function MechServiCaseStudy() {
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted">Subset of the business history</span>
               </div>
               <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-                A six-month spreadsheet record, analysed line by line. It covers only part of the business, so its numbers sit
-                below the headline figures above and are not added to them.
+                A six-month spreadsheet record, analysed line by line. It covers only part of the business history, and these are
+                the figures that can be evidenced from the records.
               </p>
               <dl className="mt-6 grid grid-cols-2 gap-6 lg:grid-cols-4">
                 {sample.stats.map((s) => (
